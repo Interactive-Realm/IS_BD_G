@@ -1,16 +1,18 @@
 import Backdrop from './Backdrop';
 
-export interface ModalProps {
+export type ModalProps = {
   isShown: boolean;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
   children?: React.ReactNode;
-}
+};
 
 const Modal = ({ isShown, children }: ModalProps) => {
   if (isShown) {
-    <Backdrop>
-      <div className="modal">{children}</div>;
-    </Backdrop>;
+    return (
+      <Backdrop>
+        <div className="modal">{children}</div>;
+      </Backdrop>
+    );
   }
 };
 

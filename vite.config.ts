@@ -4,5 +4,13 @@ import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), EnvironmentPlugin(['SUPABASE_URL', 'SUPABASE_KEY'])],
+  plugins: [
+    react(),
+    EnvironmentPlugin([
+      'SUPABASE_URL',
+      'SUPABASE_KEY',
+      'SUPABASE_URL_TOMBOLA',
+      'SUPABASE_KEY_TOMBOLA',
+    ]),
+  ],
 });

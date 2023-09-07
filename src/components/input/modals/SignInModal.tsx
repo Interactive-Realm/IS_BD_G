@@ -6,6 +6,7 @@ const SignInModal = ({ isShown, setIsShown }: ModalProps) => {
     <Modal isShown={isShown} setIsShown={setIsShown}>
       <h2>LOG IND</h2>
       <SignInForm />
+      <button className="button text secondary">OPRET BRUGER</button>
     </Modal>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getHighscores, getProfile, supabase } from '../../supabase';
+import { getHighscores, getProfile, supabase } from '../../supabase-ram';
 import { Profile, UserHighscore } from '../../types';
 import HighscoreList from '../highscore/HighscoreList';
 import SignInModal from '../input/modals/SignInModal';
@@ -42,13 +42,17 @@ const Menu = () => {
         )}
 
         <HighscoreList highscores={highscores} />
-        <div>
-          <a href="/game">SPIL NU</a>
-          <button onClick={handleClick}>LOG IND</button>
+        <div className="button-group">
+          <a href="/ram" className="button primary">
+            SPIL NU
+          </a>
+          <button onClick={handleClick} className="button text secondary">
+            LOG IND
+          </button>
         </div>
       </Overlay>
+
       <SignInModal isShown={showSignInModal} setIsShown={setShowSignInModal} />
-      <SignInModal isShown={true} setIsShown={setShowSignInModal}></SignInModal>
     </>
   );
 };

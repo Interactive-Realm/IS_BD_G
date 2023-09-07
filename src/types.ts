@@ -13,6 +13,11 @@ export type Profile = {
   email: string;
 };
 
+export type Prize = {
+  name: string;
+  message: string;
+};
+
 export type MenuType = 'start' | 'game' | 'end';
 
 export type Balloon = {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../../supabase';
+import { supabase } from '../../../supabase-ram';
 
 type SignInFormData = {
   email: string;
@@ -57,10 +57,12 @@ const SignInForm = () => {
         />
         {errors.password && <p className="error">{errors.password.message}</p>}
       </label>
-      <button className="primary" type="submit">
+
+      {signInError !== '' && <p className="error">{signInError}</p>}
+
+      <button className="button primary" type="submit">
         LOG IND
       </button>
-      {signInError !== '' && <p className="error">{signInError}</p>}
     </form>
   );
 };

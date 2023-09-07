@@ -6,9 +6,26 @@
   --gray: #767676;
   --white: #ffffff;
   --black: #000000;
+  --is-blue: #164196;
 }
 
+/* @media screen and (orientation: portrait) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+} */
+
 /* Base */
+html {
+  overflow: hidden;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -137,4 +154,163 @@ form input {
 
 form .error {
   color: red;
+}
+
+/* Tombola */
+.tombola {
+  height: 100vh;
+  text-align: center;
+}
+
+.tombola__loading {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.tombola__result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  font-size: 1.25rem;
+}
+
+.tombola__game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  height: 100%;
+}
+
+.tombola__game__title {
+  position: fixed;
+  top: 1.25rem;
+}
+
+.tombola__balloons {
+  display: flex;
+  gap: 3%;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.tombola__balloon {
+  --animation-duration: 7.5s;
+  --size: 64px;
+
+  width: var(--size);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: blue;
+  border: 1px solid black;
+
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+.tombola__balloon.red {
+  animation: MoveRedBalloon var(--animation-duration) ease-in-out infinite;
+}
+
+.tombola__balloon.blue {
+  animation: MoveBlueBalloon var(--animation-duration) ease-in-out infinite;
+}
+
+@keyframes MoveRedBalloon {
+  0%, 100% {
+    transform: translateY(75%);
+  }
+  50% {
+    transform: translateY(-75%);
+  }
+}
+
+@keyframes MoveBlueBalloon {
+  0%, 100% {
+    transform: translateY(-75%);
+  }
+  50% {
+    transform: translateY(75%);
+  }
+}
+
+/* Buttons */
+.button {
+  color: var(--white);
+  padding: 8px 32px;
+  gap: 16px; 
+  border-radius: 5px;
+  background: var(--gray);
+  color: #FFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.button.primary {
+  color: var(--white);
+  padding: 8px 32px;
+  gap: 16px; 
+  border-radius: 5px;
+  background: var(--is-blue, #164196);
+}
+
+.button.primary:hover {
+  background: var(--is-blue-dark, #164196);
+}
+
+.button.text {
+  background: none;
+  color: var(--gray);
+  font-weight: 600;
+}
+
+.button-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ram__hud {
+  position: fixed;
+  top: 1.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 8888;
+  color: var(--white);
+}
+
+.ram__time {
+  left: 1.25rem;
+}
+
+.ram__score {
+  right: 1.25rem;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: blue;
+}
+
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Utilities */
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
