@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Wave } from '../data/waveData';
 import { Balloon as BalloonType } from '../types';
 import Balloon from './Balloon';
@@ -16,6 +16,7 @@ const clamp = (num: number, min: number, max: number) =>
 
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
+  const popSound = useMemo(() => new Audio('/sounds/balloon-pop.wav'), []);
 
   const createBalloon = useCallback((): BalloonType => {
     return {
@@ -57,6 +58,14 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
   const handleClick = (index: number) => {
     setBalloons(balloons.filter((_, i) => i !== index));
     setScore((s) => s + 1);
+
+    if (popSound.ended) {
+      popSound.play();
+    } else {
+      popSound.pause();
+      popSound.currentTime = 0;
+      popSound.play();
+    }
   };
 
   return (
