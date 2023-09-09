@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../../supabase-ram';
+
+type Props = {
+  onSignIn: () => void;
+};
 
 type SignInFormData = {
   email: string;
   password: string;
 };
 
-const SignInForm = () => {
+const SignInForm = ({ onSignIn }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormData>();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [signInError, setSignInError] = useState('');
 
   const onSubmit: SubmitHandler<SignInFormData> = async (values) => {
@@ -27,7 +30,8 @@ const SignInForm = () => {
       setSignInError('Kunne ikke logge ind. Er din information korrekt?');
     } else {
       setSignInError('');
-      navigate('/');
+      // navigate('/');
+      onSignIn();
     }
   };
 

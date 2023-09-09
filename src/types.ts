@@ -21,7 +21,6 @@ export type Prize = {
 export type MenuType = 'start' | 'game' | 'end';
 
 export type Balloon = {
-  id: number;
   color: 'red' | 'blue';
   x: number;
   y: number;

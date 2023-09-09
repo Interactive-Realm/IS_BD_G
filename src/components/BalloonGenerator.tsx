@@ -1,54 +1,59 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Wave } from '../data/waveData';
 import { Balloon as BalloonType } from '../types';
 import Balloon from './Balloon';
 
 type Props = {
   setScore: React.Dispatch<React.SetStateAction<number>>;
+  wave: Wave;
 };
 
-const BalloonGenerator = ({ setScore }: Props) => {
+let updateInterval: NodeJS.Timeout;
+let waveTimeout: NodeJS.Timeout;
+
+const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
 
-  const createBalloon = (index: number): BalloonType => {
+  const createBalloon = useCallback((): BalloonType => {
     return {
-      id: index,
       color: 'blue',
       x: Math.random() * 100,
       y: 100 + Math.random() * 20,
-      speed: Math.max(0.15, Math.random() * 0.3),
+      speed: Math.max(
+        wave.minBalloonSpeed,
+        Math.random() * wave.maxBalloonSpeed
+      ),
     };
-  };
+  }, [wave.minBalloonSpeed, wave.maxBalloonSpeed]);
+
+  const spawner = useCallback(() => {
+    setBalloons((balloons) => [...balloons, createBalloon()]);
+    waveTimeout = setTimeout(spawner, wave.spawnInterval);
+  }, [wave, createBalloon]);
 
   useEffect(() => {
-    const arr: BalloonType[] = Array(25)
-      .fill(undefined)
-      .map((_, i) => createBalloon(i));
-    setBalloons(arr);
-
-    const interval = setInterval(() => {
+    updateInterval = setInterval(() => {
       setBalloons((balloons) => {
-        let b = [...balloons];
-        b = b.map((balloon) => {
-          balloon.y -= balloon.speed;
-          if (balloon.y < -10) {
-            balloon = createBalloon(balloon.id);
-          }
-          return balloon;
-        });
-        return b;
+        return balloons
+          .map((balloon) => {
+            balloon.y -= balloon.speed;
+            return balloon;
+          })
+          .filter((balloon) => balloon.y >= -10);
       });
     }, 1 / 60);
-    return () => clearInterval(interval);
-  }, []);
+
+    spawner();
+
+    return () => {
+      clearInterval(updateInterval);
+      clearInterval(waveTimeout);
+    };
+  }, [spawner, wave.minBalloonSpeed, wave.maxBalloonSpeed]);
 
   const handleClick = (index: number) => {
+    setBalloons(balloons.filter((_, i) => i !== index));
     setScore((s) => s + 1);
-    setBalloons((balloons) => {
-      const b = [...balloons];
-      b[index] = createBalloon(index);
-      return b;
-    });
-    console.log('CLICK');
   };
 
   return (

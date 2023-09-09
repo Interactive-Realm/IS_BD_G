@@ -11,12 +11,16 @@
     "host": "vite host"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.3",
+    "@react-three/fiber": "^8.14.1",
     "@supabase/supabase-js": "^2.33.1",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.1",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "react-spring": "^9.7.2",
+    "react-three-fiber": "^6.0.13"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

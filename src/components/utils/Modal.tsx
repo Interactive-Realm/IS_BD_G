@@ -6,10 +6,10 @@ export type ModalProps = {
   children?: React.ReactNode;
 };
 
-const Modal = ({ isShown, children }: ModalProps) => {
+const Modal = ({ isShown, children, setIsShown }: ModalProps) => {
   if (isShown) {
     return (
-      <Backdrop>
+      <Backdrop onClick={() => setIsShown(false)}>
         <div className="modal">{children}</div>;
       </Backdrop>
     );

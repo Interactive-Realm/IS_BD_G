@@ -6,7 +6,7 @@ export default function useWindowSize() {
     height: number;
   }>({
     width: 1200,
-    height: 800,
+    height: 1200,
   });
 
   useEffect(() => {

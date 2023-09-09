@@ -1,0 +1,217 @@
+@media screen and (orientation: portrait) {
+  .tombola {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    background: rgb(177,177,177);
+    background: -moz-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+    background: radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b1b1b1",endColorstr="#afafaf",GradientType=1);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .tombola {
+    height: 100vh;
+  }
+}
+
+/* Tombola */
+.tombola {
+  text-align: center;
+}
+
+.tombola__result {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  text-align: left;
+  padding: 5%;
+  font-size: max(2rem, 5vw);
+}
+
+.tombola__result__prize {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  height: 100%;
+  
+  text-align: left;
+  max-width: 1200px;
+  line-height: max(2.8rem, 7vw);
+}
+
+.tombola__element {
+  --animation-duration: 5s;
+  position: absolute;
+  z-index: -10;
+  width: min(50%, 300px);
+  transition-property: top, bottom, left, right, transform;
+  transition: 500ms ease-in-out;
+  width: min(60vw, 600px);
+  animation: MoveBackgroundBalloon var(--animation-duration) ease-in-out infinite;
+}
+
+@keyframes MoveBackgroundBalloon {
+  0%, 100% {
+    transform: translateY(-1%);
+  }
+  50% {
+    transform: translateY(1%);
+  }
+}
+
+.tombola__element1 {
+  top: 10%;
+  left: -8rem;
+}
+
+.tombola__element2 {
+  top: -8rem;
+  left: 40%;
+}
+
+.tombola__element3 {
+  bottom: 4%;
+  right: 10%;
+}
+
+.tombola__element4 {
+  top: 5%;
+  right: -2rem;
+}
+
+.tombola__element5 {
+  bottom: -4rem;
+  left: -2rem;
+}
+
+@media only screen and (max-height: 450px) {
+  .tombola__element5 {
+    bottom: -8rem;
+  left: -4rem;
+  }
+} 
+
+@media only screen and (max-height: 400px) {
+  .tombola__element3 {
+    bottom: -8rem;
+    right: 25%;
+  }
+} 
+
+@media only screen and (max-height: 360px) {
+  .tombola__element2 {
+    top: -12rem;
+    left: 30%;
+  }
+} 
+
+.tombola__logo {
+  width: min(75%, 500px);
+  background: var(--white);
+  padding: 0.25rem;
+}
+
+.tombola__game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  height: 100%;
+}
+
+.tombola__game__info {
+  position: fixed;
+  top: 1.25rem;
+  font-size: min(5rem, 10vw);
+  color: var(--gray);
+}
+
+.tombola__balloons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.tombola__balloon {
+  --animation-duration: 7.5s;
+  --sway-animation-duration: 10s;
+  --size: 300;
+  --scale: 1;
+  --z-index: 1;
+  --expand-time: 3s;
+  --shake: 0deg;
+  scale: var(--scale);
+  z-index: var(--z-index);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: scale ease-in var(--expand-time);
+}
+
+.tombola__balloon.red {
+  animation: MoveRedBalloon var(--animation-duration) ease-in-out infinite;
+}
+
+.tombola__balloon.blue {
+  animation: MoveBlueBalloon var(--animation-duration) ease-in-out infinite;
+}
+
+.tombola__balloon img {
+  animation: SwayBalloon var(--sway-animation-duration) ease-in-out infinite;
+}
+
+.tombola__balloon > div.shake {
+  animation: Shake 100ms ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+
+@keyframes MoveRedBalloon {
+  0%, 100% {
+    transform: translateY(30%);
+  }
+  50% {
+    transform: translateY(-30%);
+  }
+
+}
+
+@keyframes MoveBlueBalloon {
+  0%, 100% {
+    transform: translateY(-30%);
+  }
+  50% { 
+    transform: translateY(30%);
+  }
+}
+
+@keyframes SwayBalloon {
+  0%, 50%, 100% {
+    transform: translateX(-2%);
+  }
+  25%, 75% {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes Shake {
+  0%, 100% {
+    transform: rotate(var(--shake));
+  }
+  50% { 
+    transform: rotate(calc(var(--shake)*-1));
+  }
+}

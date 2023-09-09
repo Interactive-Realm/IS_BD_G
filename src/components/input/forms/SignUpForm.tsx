@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../../supabase-ram';
+
+type Props = {
+  onSignUp: () => void;
+};
 
 type SignUpFormData = {
   firstName: string;
@@ -11,26 +14,35 @@ type SignUpFormData = {
   password: string;
 };
 
-const SignUpForm = () => {
+const SignUpForm = ({ onSignUp }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [signInError, setSignInError] = useState('');
 
   const onSubmit: SubmitHandler<SignUpFormData> = async (values) => {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
+      options: {
+        data: {
+          email: values.email,
+          phone: values.phone,
+          first_name: values.firstName,
+          last_name: values.lastName,
+        },
+      },
     });
 
     if (error) {
       setSignInError('Kunne ikke logge ind. Er din information korrekt?');
     } else {
       setSignInError('');
-      navigate('/');
+      // navigate('/');
+      onSignUp();
     }
   };
 
@@ -89,8 +101,8 @@ const SignUpForm = () => {
         />
         {errors.password && <p className="error">{errors.password.message}</p>}
       </label>
-      <button className="primary" type="submit">
-        LOG IND
+      <button className="button primary" type="submit">
+        OPRET BRUGER
       </button>
       {signInError !== '' && <p className="error">{signInError}</p>}
     </form>

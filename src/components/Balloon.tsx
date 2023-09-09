@@ -12,7 +12,13 @@ const Balloon = ({ handleClick, balloon }: Props) => {
       onTouchStart={handleClick}
       className="balloon"
       style={{ left: `${balloon.x}%`, top: `${balloon.y}%` }}
-      onClick={handleClick}></span>
+      onClick={handleClick}>
+      <img
+        src="/images/assets/balloon_red_string_ram.png"
+        alt="hvid ballon"
+        draggable={false}
+      />
+    </span>
   );
 };
 

@@ -6,10 +6,15 @@ const key = process.env.SUPABASE_KEY!;
 
 export const supabase = createClient(url, key);
 
+export const getDate = (): string => {
+  const formattedDate = new Date().toISOString().split('T')[0];
+  return formattedDate;
+};
+
 export const getHighscores = async (): Promise<UserHighscore[]> => {
   const { data, error } = await supabase.rpc('get_weekly_highscores', {
     number_of_rows: 10,
-    score_date: '2023-09-05',
+    score_date: getDate(),
   });
 
   if (error || !data) return [];
@@ -17,21 +22,37 @@ export const getHighscores = async (): Promise<UserHighscore[]> => {
   return data;
 };
 
-export const getUserWeeklyHighscore = async (): Promise<UserHighscore[]> => {
-  const { data, error } = await supabase.rpc('get_user_weekly_highscore', {
-    score_date: '2023-09-05',
+export const getUserWeeklyHighscore =
+  async (): Promise<UserHighscore | null> => {
+    const { data, error } = await supabase.rpc('get_user_weekly_highscore', {
+      score_date: getDate(),
+    });
+
+    if (error || !data) return null;
+
+    return data;
+  };
+
+export const getUserGlobalHighscore =
+  async (): Promise<UserHighscore | null> => {
+    const { data, error } = await supabase.rpc('get_user_highscore');
+
+    if (error || !data) return null;
+
+    return data;
+  };
+
+export const insertScore = async (score: number) => {
+  const { error } = await supabase.from('highscores').insert({
+    score: score,
   });
 
-  if (error || !data) return [];
-
-  return data;
+  console.log(error);
 };
 
 export const getUser = async (): Promise<User | null> => {
   const response = await supabase.auth.getUser();
-
   if (response.error) return null;
-
   return response.data.user;
 };
 
@@ -43,7 +64,7 @@ export const getProfile = async (): Promise<Profile | null> => {
   const { data } = await supabase
     .from('profiles')
     .select()
-    .match({ id: user.id });
+    .match({ user_id: user.id });
 
   if (!data || data.length === 0) return null;
 
