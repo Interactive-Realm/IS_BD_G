@@ -11,13 +11,16 @@ type Props = {
 let updateInterval: NodeJS.Timeout;
 let waveTimeout: NodeJS.Timeout;
 
+const clamp = (num: number, min: number, max: number) =>
+  Math.min(Math.max(num, min), max);
+
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
 
   const createBalloon = useCallback((): BalloonType => {
     return {
       color: 'blue',
-      x: Math.random() * 100,
+      x: clamp(Math.random() * 100, 5, 80),
       y: 100 + Math.random() * 20,
       speed: Math.max(
         wave.minBalloonSpeed,
@@ -39,7 +42,7 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
             balloon.y -= balloon.speed;
             return balloon;
           })
-          .filter((balloon) => balloon.y >= -10);
+          .filter((balloon) => balloon.y >= -30);
       });
     }, 1 / 60);
 
