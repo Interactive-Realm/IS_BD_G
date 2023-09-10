@@ -171,6 +171,7 @@
 
 .tombola__balloon img {
   animation: SwayBalloon var(--sway-animation-duration) ease-in-out infinite;
+  touch-action: none;
 }
 
 .tombola__balloon > div.shake {

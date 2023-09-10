@@ -29,6 +29,10 @@ const Tombola = () => {
     })();
   }, [hasPrize]);
 
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent the default context menu behavior
+  };
+
   let component;
   if (prize) {
     component = (
@@ -118,6 +122,7 @@ const Tombola = () => {
               src="/images/assets/balloon_red.png"
               alt=""
               draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
           <TombolaBalloon setHasPrize={setHasPrize} color="red">
@@ -125,6 +130,7 @@ const Tombola = () => {
               src="/images/assets/balloon_shoe.png"
               alt=""
               draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
           <TombolaBalloon setHasPrize={setHasPrize} color="blue">
@@ -132,6 +138,7 @@ const Tombola = () => {
               src="/images/assets/balloon_red.png"
               alt=""
               draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
           <TombolaBalloon setHasPrize={setHasPrize} color="red">
@@ -139,6 +146,7 @@ const Tombola = () => {
               src="/images/assets/balloon_jacket.png"
               alt=""
               draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
           <TombolaBalloon setHasPrize={setHasPrize} color="blue">
@@ -146,6 +154,7 @@ const Tombola = () => {
               src="/images/assets/balloon_red.png"
               alt=""
               draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
         </div>

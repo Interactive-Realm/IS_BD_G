@@ -17,8 +17,6 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   const [zIndex, setZIndex] = useState(0);
   const [isPressing, setIsPressing] = useState(false);
   const [style, setStyle] = useState({
-    '--animation-duration': `${animationDuration}s`,
-    '--sway-animation-duration': `${swayAnimationDuration}s`,
     '--scale': scale,
     '--z-index': zIndex,
     '--expand-time': `${expandTime}ms`,
@@ -42,8 +40,6 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   useEffect(() => {
     console.log(animationDuration);
     setStyle({
-      '--animation-duration': `${animationDuration}s`,
-      '--sway-animation-duration': `${swayAnimationDuration}s`,
       '--scale': scale,
       '--z-index': zIndex,
       '--expand-time': `${expandTime}ms`,
@@ -59,11 +55,16 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
     shake,
   ]);
 
-  const handleStart = async () => {
+  const handleStart = () => {
     setIsPressing(true);
     setScale(2);
     setZIndex(200);
     setShake(1);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
+    e.preventDefault();
+    handleStart();
   };
 
   const handleStop = () => {
@@ -77,7 +78,7 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   return (
     <span
       onMouseDown={handleStart}
-      onTouchStart={handleStart}
+      onTouchStart={handleTouchStart}
       onTouchEnd={handleStop}
       onMouseUp={handleStop}
       className={`tombola__balloon ${color}`}
