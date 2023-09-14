@@ -26,7 +26,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
   const onSubmit: SubmitHandler<SignUpFormData> = async (values) => {
     const { error } = await supabase.auth.signUp({
       email: values.email,
-      password: values.password,
+      password: "000000",
       options: {
         data: {
           email: values.email,
@@ -41,7 +41,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
       setSignInError('Kunne ikke logge ind. Er din information korrekt?');
     } else {
       setSignInError('');
-      // navigate('/');
       onSignUp();
     }
   };
@@ -91,15 +90,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
           placeholder="Email..."
         />
         {errors.email && <p className="error">{errors.email.message}</p>}
-      </label>
-      <label>
-        Kodeord
-        <input
-          type="password"
-          {...register('password', { required: 'skal udfyldes' })}
-          placeholder="Kodeord..."
-        />
-        {errors.password && <p className="error">{errors.password.message}</p>}
       </label>
       <button className="button primary" type="submit">
         OPRET BRUGER
