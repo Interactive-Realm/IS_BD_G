@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import ReactConfetti from "react-confetti";
-import useWindowSize from "../../hooks/useWindowSize";
 import "../../styles/tombola.css";
 import { getPrice } from "../../supabase-tombola";
 import { Prize } from "../../types";
@@ -11,7 +9,6 @@ import Logo from "/images/logos/logo-color.svg";
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
   const [prize, setPrize] = useState<Prize | null>(null);
-  const { width, height } = useWindowSize();
 
   useEffect(() => {
     (async () => {
@@ -80,15 +77,7 @@ const Tombola = () => {
           />
         </span>
 
-        {prize.name !== "Nitte" && (
-          <ReactConfetti
-            width={width}
-            height={height}
-            colors={["blue", "red"]}
-            gravity={0.05}
-            numberOfPieces={50}
-          />
-        )}
+        <FlagThing />
       </div>
     );
   } else {
