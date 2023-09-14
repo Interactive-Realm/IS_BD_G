@@ -126,9 +126,10 @@ h2 {
 }
 
 .balloon {
+  background: white;
   position: absolute;
-  width: min(25%, 120px);
-  aspect-ratio: 1100 / 450;
+  width: min(75%, 300px);
+  aspect-ratio: 1 / 1;
   -webkit-touch-callout:none;
   -webkit-user-select:none;
   -moz-user-select:none;

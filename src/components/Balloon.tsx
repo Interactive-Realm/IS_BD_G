@@ -16,7 +16,7 @@ const Balloon = ({ handleClick, balloon }: Props) => {
         handleClick();
       }}>
       <img
-        src="/images/assets/balloon_red_string_ram.png"
+        src="/images/assets/balloon_red_600.png"
         alt="hvid ballon"
         draggable={false}
       />
