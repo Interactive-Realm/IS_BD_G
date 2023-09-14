@@ -16,7 +16,7 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   const [shake, setShake] = useState(0);
   const [zIndex, setZIndex] = useState(0);
   const [isPressing, setIsPressing] = useState(false);
-  const [style, setStyle] = useState({
+  const [style, setStyle] = useState<React.CSSProperties & { [key: string]: unknown }>({
     '--scale': scale,
     '--z-index': zIndex,
     '--expand-time': `${expandTime}ms`,
@@ -38,7 +38,6 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   }, [isPressing, setHasPrize]);
 
   useEffect(() => {
-    console.log(animationDuration);
     setStyle({
       '--scale': scale,
       '--z-index': zIndex,
