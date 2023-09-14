@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import ReactConfetti from 'react-confetti';
-import useWindowSize from '../../hooks/useWindowSize';
-import '../../styles/tombola.css';
-import { getPrice } from '../../supabase-tombola';
-import { Prize } from '../../types';
-import TombolaBalloon from '../TombolaBalloon';
-import Logo from '/images/logos/logo-color.svg';
+import { useEffect, useState } from "react";
+import ReactConfetti from "react-confetti";
+import useWindowSize from "../../hooks/useWindowSize";
+import "../../styles/tombola.css";
+import { getPrice } from "../../supabase-tombola";
+import { Prize } from "../../types";
+import TombolaBalloon from "../TombolaBalloon";
+import { FlagThing } from "../animations/FlagThing";
+import Logo from "/images/logos/logo-color.svg";
 
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
@@ -22,8 +23,8 @@ const Tombola = () => {
         setPrize(prize);
       } else {
         setPrize({
-          name: 'Nitte',
-          message: 'Desværre ingen gevinst denne gang',
+          name: "Nitte",
+          message: "Desværre ingen gevinst denne gang",
         });
       }
     })();
@@ -79,11 +80,11 @@ const Tombola = () => {
           />
         </span>
 
-        {prize.name !== 'Nitte' && (
+        {prize.name !== "Nitte" && (
           <ReactConfetti
             width={width}
             height={height}
-            colors={['blue', 'red']}
+            colors={["blue", "red"]}
             gravity={0.05}
             numberOfPieces={50}
           />
@@ -94,25 +95,7 @@ const Tombola = () => {
     component = (
       <div className="tombola__game">
         {/* <FlagBackground /> */}
-        <ReactConfetti
-          width={width}
-          height={height}
-          colors={['blue']}
-          gravity={0.05}
-          numberOfPieces={20}
-        />
-        {/* <ReactConfetti
-          width={width}
-          height={height}
-          colors={['blue', 'red']}
-          gravity={0.02}
-          numberOfPieces={50}
-          drawShape={(ctx) => {
-            const img = new Image();
-            img.src = '/images/assets/flag.png';
-            ctx.drawImage(img, 0, 0, 45, 45);
-          }}
-        /> */}
+        <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
         </p>
@@ -162,7 +145,11 @@ const Tombola = () => {
     );
   }
 
-  return <div className="tombola">{component}</div>;
+  return (
+    <div className="tombola">
+      {component}
+    </div>
+  );
 };
 
 export default Tombola;

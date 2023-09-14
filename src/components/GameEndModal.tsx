@@ -18,7 +18,7 @@ type Props = {
 };
 
 const GameEndModal = ({ score }: Props) => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [, setIsSignedIn] = useState(false);
   const [highscore, setHighscore] = useState<number | null>(null);
   const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
   const [screen, setScreen] = useState<
