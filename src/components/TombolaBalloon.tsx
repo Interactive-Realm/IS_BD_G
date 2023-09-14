@@ -11,7 +11,7 @@ let timeout: NodeJS.Timeout;
 const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
   const animationDuration = Math.max(Math.random() * 8, 6);
   const swayAnimationDuration = Math.max(Math.random() * 15, 10);
-  const expandTime = 2500;
+  const expandTime = 1000;
   const [scale, setScale] = useState(1);
   const [shake, setShake] = useState(0);
   const [zIndex, setZIndex] = useState(0);
@@ -79,8 +79,6 @@ const TombolaBalloon = ({ setHasPrize, color, children }: Props) => {
     <span
       onMouseDown={handleStart}
       onTouchStart={handleTouchStart}
-      onTouchEnd={handleStop}
-      onMouseUp={handleStop}
       className={`tombola__balloon ${color}`}
       style={style}>
       <div className={isPressing ? 'shake' : ''}>{children}</div>
