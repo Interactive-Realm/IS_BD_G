@@ -256,6 +256,25 @@ form .error {
   right: 1.25rem;
 }
 
+.ram__countDown {
+  position: relative;
+  font-size: 6rem;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: var(--is-blue);
+  color: var(--white);
+  padding-bottom: 3px;
+  padding-inline: calc(1ch/2);
+  box-decoration-break: clone;
+}
+
 .ram__sign-in__info {
   display: flex;
   flex-direction: column;
