@@ -1,6 +1,6 @@
 {
   "fullScreen": {
-    "zIndex": -500
+    "zIndex": -9999
   },
   "particles": {
     "color": {
@@ -29,7 +29,7 @@
       }
     },
     "opacity": {
-      "value": 0.75,
+      "value": 1,
       "animation": {
         "enable": false,
         "startValue": "max",

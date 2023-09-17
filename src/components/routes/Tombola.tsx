@@ -83,7 +83,6 @@ const Tombola = () => {
   } else {
     component = (
       <div className="tombola__game">
-        {/* <FlagBackground /> */}
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>

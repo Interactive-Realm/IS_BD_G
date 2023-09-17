@@ -19,6 +19,7 @@
   --black: #000000;
   --is-blue: #164196;
   --is-red: #E30613;
+  --is-red-dark: #b90511;
 }
 
 /* Base */
@@ -26,7 +27,11 @@ html {
   overflow: hidden;
 }
 
-body {
+.is-background {
+  position: fixed;
+  opacity: 0.90;
+  inset: 0;
+  z-index: -8888;
   background: rgb(177,177,177);
   background: -moz-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
   background: -webkit-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
@@ -49,6 +54,29 @@ h2 {
   line-height: 1.875rem/* 40px */;
 }
 
+.is-bold {
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 3.4rem;
+}
+
+.is-bold > span {
+  background-color: var(--is-red);
+  color: var(--white);
+  padding-inline: calc(1ch/2);
+  box-decoration-break: clone;
+}
+
+.is-bold > span.red {
+  background-color: var(--is-red);
+  color: var(--white);
+}
+
+.is-bold > span.blue {
+  background-color: var(--is-blue);
+  color: var(--white);
+}
+
 .red-bold > span {
   text-transform: uppercase;
   font-weight: 700;
@@ -66,6 +94,77 @@ h2 {
   padding-bottom: 3px;
   padding-inline: calc(1ch/2);
   box-decoration-break: clone;
+}
+
+/* Layouts */
+.menu-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 10%;
+}
+
+.menu-layout main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  height: 100%;
+  padding-block: 1rem;
+}
+
+.menu-title {
+  box-sizing: border-box;
+  font-size: 4rem;
+  line-height: calc(6rem);
+}
+
+.menu-layout footer {
+  position: fixed;
+  bottom: 0;
+  inset-inline: 0;
+  display: grid;
+  place-items: center;
+  background: white;
+  padding: 0.5rem;
+  height: 10%;
+}
+
+.menu-footer-placeholder {
+  height: 10%;
+}
+
+.menu-logo {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* RAM Menu */
+.menu__main-prize {
+  max-width: 750px;
+  width: 100%;
+}
+
+.menu__prizes-info {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.menu__prizes-info h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.menu__prizes-info ol {
+  list-style: decimal;
+  list-style-position: inside;
+  display: grid;
+  gap: 0.18rem;
+}
+
+.menu__prizes-info ol li {
+  font-size: 1.5rem;
 }
 
 /* Highscore list */
@@ -126,19 +225,25 @@ h2 {
 }
 
 .balloon {
-  background: white;
+  display: flex;
   position: absolute;
-  width: min(75%, 300px);
+  width: min(40vw, 250px);
   aspect-ratio: 1 / 1;
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  left: var(--left);
+  transform: translateX(-50%);
 }
 
 .balloon img {
-  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  scale: 3;
+  pointer-events: none;
 }
 
 /* Modal */
@@ -209,18 +314,19 @@ form .error {
   font-weight: 700;
   width: 100%;
   max-width: max-content;
+  border-radius: 50px;
 }
 
 .button.primary {
   color: var(--white);
-  padding: 8px 32px;
+  padding: 12px 40px;
   gap: 16px; 
-  border-radius: 5px;
-  background: var(--is-blue, #164196);
+  background: var(--is-red);
+  font-size: 1.75rem;
 }
 
 .button.primary:hover {
-  background: var(--is-blue-dark, #164196);
+  background: var(--is-red-dark);
 }
 
 .button.text {

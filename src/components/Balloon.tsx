@@ -1,4 +1,4 @@
-import { Balloon as BalloonType } from '../types';
+import { Balloon as BalloonType } from "../types";
 
 type Props = {
   balloon: BalloonType;
@@ -6,18 +6,22 @@ type Props = {
 };
 
 const Balloon = ({ handleClick, balloon }: Props) => {
+  const style: React.CSSProperties & { [key: string]: unknown } = {
+    "--left": `${balloon.x}%`,
+    top: `${balloon.y}%`,
+  };
+
   return (
     <span
       onMouseDown={handleClick}
       onTouchStart={handleClick}
       className="balloon"
-      style={{ left: `${balloon.x}%`, top: `${balloon.y}%` }}
-      onClick={() => {
-        handleClick();
-      }}>
+      style={style}
+      onClick={handleClick}
+    >
       <img
         src="/images/assets/balloon_red_600.png"
-        alt="hvid ballon"
+        alt="ballon"
         draggable={false}
       />
     </span>

@@ -23,7 +23,7 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
   const createBalloon = useCallback((): BalloonType => {
     return {
       color: 'blue',
-      x: clamp(Math.random() * 100, 5, 80),
+      x: clamp(Math.random() * 100, 5, 95),
       y: 100 + Math.random() * 20,
       speed: Math.max(
         wave.minBalloonSpeed,
@@ -45,7 +45,7 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
             balloon.y -= balloon.speed;
             return balloon;
           })
-          .filter((balloon) => balloon.y >= -30);
+          .filter((balloon) => balloon.y >= -100);
       });
     }, 1 / 60);
 
