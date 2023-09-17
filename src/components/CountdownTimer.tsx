@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
   const [count, setCount] = useState(2);
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
