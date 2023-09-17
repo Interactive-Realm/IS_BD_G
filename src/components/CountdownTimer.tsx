@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
   const [count, setCount] = useState(2);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,25 +18,28 @@ const CountdownTimer = () => {
     };
   }, [count]);
 
-  useEffect(() => {
-    if (count === 2) {
-      setMessage('KLAR');
-    } else if (count === 1) {
-      setMessage('PARAT');
-    }
-    else if (count === 0) {
-      setMessage('SPIL');
-    }
-    else if (count === -1) {
-      setMessage("");
-    }
-  }, [count]);
+  let content;
+  if (count === 2) {
+    content = (
+      <p className="blue-bold">
+        <span>KLAR</span>
+      </p>
+    );
+  } else if (count === 1) {
+    content = (
+      <p className="blue-bold">
+        <span>PARAT</span>
+      </p>
+    );
+  } else if (count === 0) {
+    content = (
+      <p className="red-bold">
+        <span>SPIL!</span>
+      </p>
+    );
+  }
 
-  return (
-    <div className="countdown-container">
-      {message && <p>{message}</p>}
-    </div>
-  );
+  return <div className="countdown-container">{content}</div>;
 };
 
 export default CountdownTimer;
