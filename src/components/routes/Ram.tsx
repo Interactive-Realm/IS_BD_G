@@ -57,9 +57,9 @@ const Ram = () => {
       <span className="ram__hud ram__score no-select">
         {formatScore(score)}
       </span>
-      <p className="ram__countDown">
-      <span><CountdownTimer/></span>
-      </p>
+        <div className="ram__hud no-select">
+        <CountdownTimer/>
+        </div>
       <div className="background">
         <img src="/sky.jpg" alt="himmel" />
       </div>

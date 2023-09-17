@@ -256,16 +256,13 @@ form .error {
   right: 1.25rem;
 }
 
-.ram__countDown {
-  position: relative;
-  font-size: 6rem;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+
+.countdown-container {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the element based on its own dimensions */
+
   text-transform: uppercase;
   font-weight: 700;
   background-color: var(--is-blue);
@@ -273,7 +270,17 @@ form .error {
   padding-bottom: 3px;
   padding-inline: calc(1ch/2);
   box-decoration-break: clone;
+  font-size: 8rem;
+  /* Apply background color only when the message is not empty */
+  background-color: var(--is-blue);
 }
+
+/* Apply a different style when the message is empty (no background) */
+.countdown-container:empty {
+  background-color: transparent;
+}
+
+
 
 .ram__sign-in__info {
   display: flex;
