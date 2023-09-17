@@ -256,6 +256,15 @@ form .error {
   right: 1.25rem;
 }
 
+
+.countdown-container {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the element based on its own dimensions */
+  font-size: 6rem;
+}
+
 .ram__sign-in__info {
   display: flex;
   flex-direction: column;

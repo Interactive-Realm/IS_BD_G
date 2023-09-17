@@ -1,0 +1,13 @@
+For at deltage i konkurrencen skal du udfylde nedenstående felter.
+Ved deltagelse i konkurrencen tilmelder du dig samtidig Club INTERSPORT. Medlemskabet er gratis og du kan til en hver tid afmelde dig igen.
+
+Navn
+Efternavn
+Telefonnummer
+Email
+Postnummer
+
+<boks> Jeg accepterer konkurrencebetingelserne. /// konkurrencebetingelserne er understreget.
+<boks> Jeg samtykker til at melde mig ind i Club INTERSPORT. /// Club INTERSPORT er understreget.
+
+*Se konkurrencebetingelser her /// her er understreget.

@@ -4,6 +4,8 @@ import { getGameDuration, waves } from '../../data/waveData';
 import { formatScore } from '../../utils';
 import BalloonGenerator from '../BalloonGenerator';
 import GameEndModal from '../GameEndModal';
+import CountdownTimer from '../CountdownTimer';
+
 
 let interval: NodeJS.Timeout;
 
@@ -55,6 +57,9 @@ const Ram = () => {
       <span className="ram__hud ram__score no-select">
         {formatScore(score)}
       </span>
+        <div className="ram__hud no-select">
+        <CountdownTimer/>
+        </div>
       <div className="background">
         <img src="/sky.jpg" alt="himmel" />
       </div>
