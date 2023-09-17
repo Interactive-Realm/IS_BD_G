@@ -1,19 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/ram",
-      "destination": "/ram"
-    },
-    {
-      "source": "/ram/game",
-      "destination": "/ram/game"
-    },
-    {
-      "source": "/tombola",
+      "source": "/tombola(.*)",
       "destination": "/tombola"
     },
     {
-      "source": "/",
+      "source": "/ram(.*)",
+      "destination": "/ram"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/"
     }
   ]
