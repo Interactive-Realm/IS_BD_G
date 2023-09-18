@@ -5,10 +5,13 @@ import { Prize } from "../../types";
 import TombolaBalloon from "../TombolaBalloon";
 import { FlagThing } from "../animations/FlagThing";
 import Logo from "/images/logos/logo-color.svg";
+import PrizeConfetti from "../PrizeConfetti";
 
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
   const [prize, setPrize] = useState<Prize | null>(null);
+  const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null); // Track which balloon is expanding
+  const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false); // Track if any balloon is clicked
 
   useEffect(() => {
     (async () => {
@@ -29,6 +32,19 @@ const Tombola = () => {
 
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent the default context menu behavior
+  };
+
+  const handleBalloonClick = (balloonIndex: number) => {
+    if (expandingBalloon === null) {
+      // If no balloon is expanding, allow this one to expand
+      setIsAnyBalloonClicked(true);
+      setExpandingBalloon(balloonIndex);
+      console.log("setting expanding balloon with index: " + balloonIndex);
+    } else if (expandingBalloon === balloonIndex) {
+      // If the clicked balloon is already expanding, allow it to collapse
+      setIsAnyBalloonClicked(false);
+      setExpandingBalloon(null);
+    }
   };
 
   let component;
@@ -78,6 +94,7 @@ const Tombola = () => {
         </span>
 
         <FlagThing />
+        <PrizeConfetti/>
       </div>
     );
   } else {
@@ -88,15 +105,28 @@ const Tombola = () => {
           <span>POP EN BALLON</span>
         </p>
         <div className="tombola__balloons">
-          <TombolaBalloon setHasPrize={setHasPrize} color="blue">
+          <TombolaBalloon
+            setHasPrize={setHasPrize}
+            color="blue"
+            onClick={() => handleBalloonClick(1)}
+            isExpanding={expandingBalloon === 1}
+            isAnyBalloonClicked={isAnyBalloonClicked}
+          >
             <img
               src="/images/assets/balloon_red.png"
               alt=""
               draggable={false}
               onContextMenu={handleContextMenu}
+              
             />
           </TombolaBalloon>
-          <TombolaBalloon setHasPrize={setHasPrize} color="red">
+          <TombolaBalloon
+            setHasPrize={setHasPrize}
+            color="red"
+            onClick={() => handleBalloonClick(2)}
+            isExpanding={expandingBalloon === 2}
+            isAnyBalloonClicked={isAnyBalloonClicked}
+          >
             <img
               src="/images/assets/balloon_shoe.png"
               alt=""
@@ -104,7 +134,13 @@ const Tombola = () => {
               onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
-          <TombolaBalloon setHasPrize={setHasPrize} color="blue">
+          <TombolaBalloon
+            setHasPrize={setHasPrize}
+            color="blue"
+            onClick={() => handleBalloonClick(3)}
+            isExpanding={expandingBalloon === 3}
+            isAnyBalloonClicked={isAnyBalloonClicked}
+          >
             <img
               src="/images/assets/balloon_red.png"
               alt=""
@@ -112,7 +148,13 @@ const Tombola = () => {
               onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
-          <TombolaBalloon setHasPrize={setHasPrize} color="red">
+          <TombolaBalloon
+            setHasPrize={setHasPrize}
+            color="red"
+            onClick={() => handleBalloonClick(4)}
+            isExpanding={expandingBalloon === 4}
+            isAnyBalloonClicked={isAnyBalloonClicked}
+          >
             <img
               src="/images/assets/balloon_jacket.png"
               alt=""
@@ -120,7 +162,13 @@ const Tombola = () => {
               onContextMenu={handleContextMenu}
             />
           </TombolaBalloon>
-          <TombolaBalloon setHasPrize={setHasPrize} color="blue">
+          <TombolaBalloon
+            setHasPrize={setHasPrize}
+            color="blue"
+            onClick={() => handleBalloonClick(5)}
+            isExpanding={expandingBalloon === 5}
+            isAnyBalloonClicked={isAnyBalloonClicked}
+          >
             <img
               src="/images/assets/balloon_red.png"
               alt=""

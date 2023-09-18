@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CountdownTimer from '../components/CountdownTimer';
+import CountdownTimer from './CountdownTimer';
 
 interface LoadingScreenProps {
     onComplete: () => void; // Define the type for onComplete

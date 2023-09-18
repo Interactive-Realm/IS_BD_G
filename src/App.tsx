@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoadingScreen from './components/LoadingScreen'; // Import the LoadingScreen component
+import CountdownScreen from './components/CountdownScreen'; // Import the LoadingScreen component
 import Menu from './components/routes/Menu';
 import Ram from './components/routes/Ram';
 import Tombola from './components/routes/Tombola';
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Menu />} />
         <Route
           path="/ram/*"
-          element={showRam ? <Ram /> : <LoadingScreen onComplete={handleCountdownComplete} />}
+          element={showRam ? <Ram /> : <CountdownScreen onComplete={handleCountdownComplete} />}
         />
         <Route path="/tombola/*" element={<Tombola />} />
         <Route path="*" element={<Menu />} />
