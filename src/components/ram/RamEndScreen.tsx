@@ -31,7 +31,7 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
 
   const signIn = async () => {
     const user = await getUser();
-    //setIsSignedIn(user !== null);
+    setIsSignedIn(user !== null);
   };
 
   const handlePlayAgain = async () => {

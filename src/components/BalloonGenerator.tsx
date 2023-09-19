@@ -4,6 +4,7 @@ import { Balloon as BalloonType } from '../types';
 import Balloon from './Balloon';
 import PoppedBalloon from './PoppedBalloon';
 
+
 type Props = {
   setScore: React.Dispatch<React.SetStateAction<number>>;
   wave: Wave;
@@ -18,7 +19,6 @@ Math.min(Math.max(num, min), max);
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
   const [poppedBalloons, setPoppedBalloons] = useState<BalloonType[]>([]);
-  //const popSound = useMemo(() => new Audio('/sounds/balloon-pop.wav'), []);
 
   const createBalloon = useCallback((): BalloonType => {
     return {
@@ -61,14 +61,6 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
     setPoppedBalloons([...poppedBalloons, balloons[index]])
     setBalloons(balloons.filter((_, i) => i !== index));
     setScore((s) => s + 1);
-
-    /*if (popSound.ended) {
-      popSound.play();
-    } else {
-      popSound.pause();
-      popSound.currentTime = 0;
-      popSound.play();
-    }*/
   };
 
   const handleDestroy = (index: number) => {
