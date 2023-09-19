@@ -3,6 +3,7 @@ import { getGameDuration, waves } from "../../data/waveData";
 import { formatScore } from "../../utils";
 import BalloonGenerator from "../BalloonGenerator";
 import { RamScreen } from "../routes/Ram";
+import { FlagThing } from '../animations/FlagThing';
 
 let interval: NodeJS.Timeout;
 
@@ -48,7 +49,8 @@ const RamGame = ({ setScreen, score, setScore }: Props) => {
   }, [waveIndex]);
 
   return (
-    <div>
+      <div>
+          <FlagThing />
       <span className="ram__hud ram__time no-select">
         00:{formatScore(time, 2)}
       </span>

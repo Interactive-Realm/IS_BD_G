@@ -6,6 +6,7 @@ import { MenuLayout } from "../MenuLayout";
 import HighscoreList from "../highscore/HighscoreList";
 import SignUpForm from "../input/forms/SignUpForm";
 import { RamScreen } from "../routes/Ram";
+import LegalStuff from "../input/modals/SignInModal"
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
@@ -69,7 +70,9 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
               onClick={() => setShowLegalStuff(true)}
             >
               *Se konkurrencebetingelser her
-            </button>
+                      </button>
+
+                      <LegalStuff isShown={showLegalStuff} />
           </div>
         </>
       ) : (
@@ -85,7 +88,9 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
             INTERSPORT. Medlemskabet er gratis og du kan til en hver tid afmelde
             dig igen.
           </p>
-          <SignUpForm onSignUp={handleSignUp} />
+                      <SignUpForm onSignUp={handleSignUp} />
+
+                      
         </>
       )}
     </MenuLayout>
