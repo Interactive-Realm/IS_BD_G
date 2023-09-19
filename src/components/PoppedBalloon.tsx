@@ -19,13 +19,14 @@ const PoppedBalloon = ({ handleDestroy, balloon }: Props) => {
       className="balloon"
       style={{ left: `${balloon.x}%`, top: `${balloon.y}%` }}
     >
-      <img
-        src="/images/assets/BalloonPopAnim.gif"
-        alt="hvid ballon"
-        draggable={false}
-      />
+      
     </span>
   );
 };
 
 export default PoppedBalloon;
+<img
+        src="/images/assets/BalloonPopAnim.gif"
+        alt="hvid ballon"
+        draggable={false}
+      />
