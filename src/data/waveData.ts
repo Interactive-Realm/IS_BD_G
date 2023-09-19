@@ -7,23 +7,23 @@ export type Wave = {
 
 export const slowWave: Wave = {
   duration: 10,
-  spawnInterval: 300,
-  minBalloonSpeed: 0.12,
-  maxBalloonSpeed: 0.16,
+  spawnInterval: 350,
+  minBalloonSpeed: 0.10,
+  maxBalloonSpeed: 0.15, 
 };
 
 export const mediumWave: Wave = {
   duration: 10,
-  spawnInterval: 225,
-  minBalloonSpeed: 0.3,
-  maxBalloonSpeed: 0.36,
+  spawnInterval: 300,
+  minBalloonSpeed: 0.22,
+  maxBalloonSpeed: 0.28,
 };
 
 export const fastWave: Wave = {
   duration: 5,
-  spawnInterval: 150,
-  minBalloonSpeed: 0.42,
-  maxBalloonSpeed: 0.48,
+  spawnInterval: 200,
+  minBalloonSpeed: 0.35,
+  maxBalloonSpeed: 0.40,
 };
 
 export const waves: Wave[] = [
