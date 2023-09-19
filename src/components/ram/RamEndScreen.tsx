@@ -1,9 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import {
-  getHighscores,
-  getUser,
-  insertScore
-} from "../../supabase-ram";
+import { getHighscores, getUser, insertScore } from "../../supabase-ram";
 import { UserHighscore } from "../../types";
 import { formatScore } from "../../utils";
 import { MenuLayout } from "../MenuLayout";
@@ -28,15 +24,15 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
   useEffect(() => {
     (async () => {
       signIn();
-      
+
       setWeeklyHighscores(await getHighscores());
     })();
   }, []);
 
   const signIn = async () => {
     const user = await getUser();
-    setIsSignedIn(user !== null);
-  }
+    //setIsSignedIn(user !== null);
+  };
 
   const handlePlayAgain = async () => {
     await saveScore();
@@ -51,19 +47,11 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
     <MenuLayout>
       {isSignedIn ? (
         <>
-          <div className="end-screen__title">
-            <div className="end-screen__title__score">
-              <h1 className="blue-bold">
-                <span>DIN SCORE</span>
-              </h1>
-              <h1 className="red-bold">
-                <span>{formatScore(score, 4)}</span>
-              </h1>
-            </div>
-            <h1 className="blue-bold">
-              <span>UGENS TOP 10</span>
-            </h1>
-          </div>
+          <h1 className="is-bold end-screen__title">
+            <span className="blue">DIN SCORE</span>
+            <span className="red">{formatScore(score, 4)}</span>
+            <span className="blue">UGENS TOP 10</span>
+          </h1>
 
           <HighscoreList highscores={weeklyHighscores} />
 

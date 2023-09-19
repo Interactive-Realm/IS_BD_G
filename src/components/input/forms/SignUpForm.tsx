@@ -24,8 +24,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
   const [signInError, setSignInError] = useState("");
 
   const onSubmit: SubmitHandler<SignUpFormData> = async (values) => {
-    console.log(values)
-    if (values.checkbox.length < 2) return;
+    if (values.checkbox && values.checkbox.length < 2) return;
 
     const { error } = await supabase.auth.signUp({
       email: values.email,
