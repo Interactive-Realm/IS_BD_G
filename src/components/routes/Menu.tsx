@@ -32,6 +32,10 @@ const Menu = () => {
             *Se konkurrencebetingelser her
           </a>
         </div>
+        <div className="menu-footer-logo">
+          <img className="menu-logo" src="/images/logos/logo-payoff-color.svg" alt="intersport logo" />
+        </div>
+          
       </MenuLayout>
     </>
   );
