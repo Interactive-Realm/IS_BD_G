@@ -4,7 +4,8 @@ import { getGameDuration, waves } from '../../data/waveData';
 import { formatScore } from '../../utils';
 import BalloonGenerator from '../BalloonGenerator';
 import GameEndModal from '../GameEndModal';
-//import { FlagThing } from '../animations/FlagThing';
+
+
 
 let interval: NodeJS.Timeout;
 
@@ -54,10 +55,13 @@ const Ram = () => {
         00:{formatScore(time, 2)}
       </span>
       <span className="ram__hud ram__score no-select">
-        {formatScore(score, 4)}
+        {formatScore(score)}
       </span>
+      <div className="background">
+        <img src="/sky.jpg" alt="himmel" />
+      </div>
       <div>
-        <BalloonGenerator setScore={setScore} wave={wave} />
+      <BalloonGenerator setScore={setScore} wave={wave} isPlaying={isPlaying} />
       </div>
 
       {!isPlaying && <GameEndModal score={score} />}

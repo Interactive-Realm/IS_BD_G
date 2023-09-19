@@ -10,7 +10,7 @@ const PoppedBalloon = ({ handleDestroy, balloon }: Props) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       handleDestroy();
-    }, 180);
+    }, 100);
 
     return () => clearTimeout(timeout);
   }, []);
