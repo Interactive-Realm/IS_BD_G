@@ -3,6 +3,7 @@ import "../../styles/tombola.css";
 import { getPrice } from "../../supabase-tombola";
 import { Prize } from "../../types";
 import TombolaBalloon from "../TombolaBalloon";
+import { FlagThing } from "../animations/FlagThing";
 import Logo from "/images/logos/logo-color.svg";
 import PrizeConfetti from "../PrizeConfetti";
 

@@ -4,7 +4,6 @@ import { getGameDuration, waves } from '../../data/waveData';
 import { formatScore } from '../../utils';
 import BalloonGenerator from '../BalloonGenerator';
 import GameEndModal from '../GameEndModal';
-import { FlagThing } from '../animations/FlagThing';
 
 let interval: NodeJS.Timeout;
 
