@@ -50,7 +50,6 @@ const Ram = () => {
 
   return (
     <div>
-      <FlagThing />
       <span className="ram__hud ram__time no-select">
         00:{formatScore(time, 2)}
       </span>

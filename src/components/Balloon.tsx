@@ -19,7 +19,7 @@ const Balloon = ({ handleClick, balloon }: Props) => {
       style={style}
       onClick={handleClick}
     >
-      <img className="noTapHightlight"
+      <img
         src="/images/assets/balloon_red_600.png"
         alt="ballon"
         draggable={false}
