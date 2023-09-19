@@ -15,6 +15,7 @@ interface Props {
 const RamEndScreen = ({ setScreen, score }: Props) => {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
+    const [showLegalStuff, setShowLegalStuff] = useState(false);
 
     const saveScore = useCallback(async () => {
         await insertScore(score);
@@ -42,6 +43,11 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
         signIn();
     };
 
+    // Function to toggle showLegalStuff
+    const toggleLegalStuff = () => {
+        setShowLegalStuff(!showLegalStuff);
+    };
+
     return (
         <MenuLayout>
             {isSignedIn ? (
@@ -65,7 +71,7 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
                         </button>
                         <button
                             className="button text"
-                            onClick={() => setShowLegalStuff(true)}
+                            onClick={toggleLegalStuff} // Toggle showLegalStuff
                         >
                             *Se konkurrencebetingelser her
                         </button>
@@ -81,11 +87,17 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
                     </p>
                     <p>
                         Ved deltagelse i konkurrencen tilmelder du dig samtidig Club
-                        INTERSPORT. Medlemskabet er gratis og du kan til en hver tid afmelde
+                        INTERSPORT. Medlemskabet er gratis, og du kan til enhver tid afmelde
                         dig igen.
                     </p>
                     <SignUpForm onSignUp={handleSignUp} />
                 </>
+            )}
+            {showLegalStuff && (
+                <div>
+                    {/* Display legal information here */}
+                    This is where you can display legal information.
+                </div>
             )}
         </MenuLayout>
     );
