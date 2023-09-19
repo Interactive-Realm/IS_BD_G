@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { supabase } from '../../../supabase-ram';
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { supabase } from "../../../supabase-ram";
 
 type Props = {
   onSignUp: () => void;
@@ -12,6 +12,7 @@ type SignUpFormData = {
   phone: string;
   email: string;
   password: string;
+  checkbox: [];
 };
 
 const SignUpForm = ({ onSignUp }: Props) => {
@@ -20,10 +21,12 @@ const SignUpForm = ({ onSignUp }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>();
-  // const navigate = useNavigate();
-  const [signInError, setSignInError] = useState('');
+  const [signInError, setSignInError] = useState("");
 
   const onSubmit: SubmitHandler<SignUpFormData> = async (values) => {
+    console.log(values)
+    if (values.checkbox.length < 2) return;
+
     const { error } = await supabase.auth.signUp({
       email: values.email,
       password: "000000",
@@ -38,9 +41,9 @@ const SignUpForm = ({ onSignUp }: Props) => {
     });
 
     if (error) {
-      setSignInError('Kunne ikke logge ind. Er din information korrekt?');
+      setSignInError("Kunne ikke logge ind. Er din information korrekt?");
     } else {
-      setSignInError('');
+      setSignInError("");
       onSignUp();
     }
   };
@@ -51,7 +54,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
         Fornavn
         <input
           type="text"
-          {...register('firstName', { required: 'skal udfyldes' })}
+          {...register("firstName", { required: "skal udfyldes" })}
           placeholder="Fornavn..."
         />
         {errors.firstName && (
@@ -62,7 +65,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
         Efternavn
         <input
           type="text"
-          {...register('lastName', { required: 'skal udfyldes' })}
+          {...register("lastName", { required: "skal udfyldes" })}
           placeholder="Efternavn..."
         />
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
@@ -71,7 +74,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
         Telefon nr.
         <input
           type="tel"
-          {...register('phone', { required: 'skal udfyldes' })}
+          {...register("phone", { required: "skal udfyldes" })}
           placeholder="Telefon nr..."
         />
         {errors.phone && <p className="error">{errors.phone.message}</p>}
@@ -80,21 +83,29 @@ const SignUpForm = ({ onSignUp }: Props) => {
         Email
         <input
           type="text"
-          {...register('email', {
-            required: 'skal udfyldes',
+          {...register("email", {
+            required: "skal udfyldes",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'ugyldig email',
+              message: "ugyldig email",
             },
           })}
           placeholder="Email..."
         />
         {errors.email && <p className="error">{errors.email.message}</p>}
       </label>
+      <div className="input-checkbox">
+        <input {...register("checkbox")} type="checkbox" value="A" />
+        Jeg accepterer <button onClick={() => {}}>konkurrencebetingelser</button>.
+      </div>
+      <div className="input-checkbox">
+        <input {...register("checkbox")} type="checkbox" value="B" />
+        Jeg samtykker til at melde mig ind i <a href="">Club INTERSPORT</a>.
+      </div>
       <button className="button primary" type="submit">
         OPRET BRUGER
       </button>
-      {signInError !== '' && <p className="error">{signInError}</p>}
+      {signInError !== "" && <p className="error">{signInError}</p>}
     </form>
   );
 };

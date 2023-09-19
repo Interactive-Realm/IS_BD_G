@@ -1,18 +1,9 @@
-import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CountdownScreen from './components/CountdownScreen'; // Import the LoadingScreen component
 import Menu from './components/routes/Menu';
 import Ram from './components/routes/Ram';
 import Tombola from './components/routes/Tombola';
 
 function App() {
-  const [showRam, setShowRam] = useState(false);
-
-  // Callback function to be called when the countdown is complete
-  const handleCountdownComplete = () => {
-    setShowRam(true);
-  };
-
   return (
     <BrowserRouter>
       <div className='is-background'></div>
@@ -20,7 +11,7 @@ function App() {
         <Route path="/" element={<Menu />} />
         <Route
           path="/ram/*"
-          element={showRam ? <Ram /> : <CountdownScreen onComplete={handleCountdownComplete} />}
+          element={<Ram />}
         />
         <Route path="/tombola/*" element={<Tombola />} />
         <Route path="*" element={<Menu />} />

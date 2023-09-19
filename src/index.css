@@ -58,6 +58,7 @@ h2 {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 3.4rem;
+  box-sizing: border-box;
 }
 
 .is-bold > span {
@@ -65,6 +66,7 @@ h2 {
   color: var(--white);
   padding-inline: calc(1ch/2);
   box-decoration-break: clone;
+  box-sizing: border-box;
 }
 
 .is-bold > span.red {
@@ -84,6 +86,7 @@ h2 {
   color: var(--white);
   padding-inline: calc(1ch/2);
   box-decoration-break: clone;
+  box-sizing: border-box;
 }
 
 .blue-bold > span {
@@ -94,13 +97,14 @@ h2 {
   padding-bottom: 3px;
   padding-inline: calc(1ch/2);
   box-decoration-break: clone;
+  box-sizing: border-box;
 }
 
 /* Layouts */
 .menu-layout {
   height: 100vh;
   display: grid;
-  grid-template-rows:auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   margin: 0;
 }
 
@@ -113,6 +117,8 @@ h2 {
   overflow-y: scroll;
   height: 100%;
   padding-block: 1rem;
+  max-width: 700px;
+  margin-inline: auto;
 }
 
 .menu-title {
@@ -180,21 +186,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.highscore-list__title {
-  color: var(--gray, #767676);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.highscore-list__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 0.25rem;
 }
 
 .highscore-list__item {
@@ -209,21 +201,7 @@ h2 {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-
-.highscore-list__item + .highscore-list__item {
-  margin-top: 2px;
-}
-
-.highscore-list__item + .highscore-list__item::before {
-  content: '';
-  position: absolute;
-  background: #e0e0e0;
-  width: 75%;
-  height: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
+  background-color: #ebebeb;
 }
 
 /* Balloon */
@@ -307,7 +285,7 @@ form label {
 }
 
 form input {
-  border: 2px solid blue;
+  background: #ebebeb;
   border-radius: 5px;
   padding: 0.25rem 0.5rem;
 }
@@ -463,4 +441,15 @@ form .error {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* More ram */
+.end-screen__title {
+  display: grid;
+  gap: 1rem;
+}
+
+.end-screen__title__score {
+  display: flex;
+  gap: 0.8rem;
 }

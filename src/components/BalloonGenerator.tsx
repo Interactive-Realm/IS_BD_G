@@ -7,7 +7,6 @@ import PoppedBalloon from './PoppedBalloon';
 type Props = {
   setScore: React.Dispatch<React.SetStateAction<number>>;
   wave: Wave;
-  isPlaying: boolean;
 };
 
 let updateInterval: NodeJS.Timeout;
@@ -16,7 +15,7 @@ let waveTimeout: NodeJS.Timeout;
 const clamp = (num: number, min: number, max: number) =>
 Math.min(Math.max(num, min), max);
 
-const BalloonGenerator = ({ setScore, wave, isPlaying }: Props) => {
+const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
   const [poppedBalloons, setPoppedBalloons] = useState<BalloonType[]>([]);
   //const popSound = useMemo(() => new Audio('/sounds/balloon-pop.wav'), []);
@@ -50,15 +49,13 @@ const BalloonGenerator = ({ setScore, wave, isPlaying }: Props) => {
       });
     }, 1 / 60);
 
-    if (isPlaying) {
-      spawner();
-    }
+    spawner();
 
     return () => {
       clearInterval(updateInterval);
       clearInterval(waveTimeout);
     };
-  }, [spawner, wave.minBalloonSpeed, wave.maxBalloonSpeed, isPlaying]);
+  }, [spawner, wave.minBalloonSpeed, wave.maxBalloonSpeed]);
 
   const handleClick = (index: number) => {
     setPoppedBalloons([...poppedBalloons, balloons[index]])
