@@ -4,6 +4,7 @@ import { getGameDuration, waves } from '../../data/waveData';
 import { formatScore } from '../../utils';
 import BalloonGenerator from '../BalloonGenerator';
 import GameEndModal from '../GameEndModal';
+import { FlagThing } from '../animations/FlagThing';
 
 
 
@@ -51,15 +52,13 @@ const Ram = () => {
 
   return (
     <div>
+      <FlagThing />
       <span className="ram__hud ram__time no-select">
         00:{formatScore(time, 2)}
       </span>
       <span className="ram__hud ram__score no-select">
         {formatScore(score)}
       </span>
-      <div className="background">
-        <img src="/sky.jpg" alt="himmel" />
-      </div>
       <div>
       <BalloonGenerator setScore={setScore} wave={wave} isPlaying={isPlaying} />
       </div>
