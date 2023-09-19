@@ -167,6 +167,15 @@ h2 {
   font-size: 1.5rem;
 }
 
+.noTapHightlight {
+    /* Prevent text selection */
+    user-select: none;
+  
+    /* Remove tap highlighting */
+    -webkit-tap-highlight-color: transparent; /* For Webkit-based browsers like Safari */
+    tap-highlight-color: transparent; /* For other browsers */
+}
+
 /* Highscore list */
 .highscore-list {
   display: flex;
