@@ -72,7 +72,7 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
               *Se konkurrencebetingelser her
                       </button>
 
-                      <LegalStuff isShown={showLegalStuff} />
+                      <LegalStuff isShown={showLegalStuff} setIsShown={showLegalStuff} />
           </div>
         </>
       ) : (
