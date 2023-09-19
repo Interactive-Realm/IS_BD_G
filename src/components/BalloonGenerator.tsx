@@ -18,7 +18,6 @@ const clamp = (num: number, min: number, max: number) =>
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
   const [poppedBalloons, setPoppedBalloons] = useState<BalloonType[]>([]);
-  const popSound = useMemo(() => new Audio('/sounds/balloon-pop.wav'), []);
 
   const createBalloon = useCallback((): BalloonType => {
     return {
@@ -62,13 +61,6 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
     setBalloons(balloons.filter((_, i) => i !== index));
     setScore((s) => s + 1);
 
-    if (popSound.ended) {
-      popSound.play();
-    } else {
-      popSound.pause();
-      popSound.currentTime = 0;
-      popSound.play();
-    }
   };
 
   const handleDestroy = (index: number) => {
