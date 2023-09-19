@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, /*useMemo*/ useState } from 'react';
 import { Wave } from '../data/waveData';
 import { Balloon as BalloonType } from '../types';
 import Balloon from './Balloon';
