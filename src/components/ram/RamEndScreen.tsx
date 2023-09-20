@@ -65,8 +65,6 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
             <button className="button primary" onClick={handlePlayAgain}>
               SPIL IGEN
             </button>
-
-                      <LegalStuff isShown={showLegalStuff} setIsShown={showLegalStuff} />
           </div>
         </>
       ) : (
