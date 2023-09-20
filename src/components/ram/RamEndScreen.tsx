@@ -6,7 +6,6 @@ import { MenuLayout } from "../MenuLayout";
 import HighscoreList from "../highscore/HighscoreList";
 import SignUpForm from "../input/forms/SignUpForm";
 import { RamScreen } from "../routes/Ram";
-import LegalStuff from "../input/modals/SignInModal"
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
