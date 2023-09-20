@@ -1,15 +1,14 @@
-import { useState } from 'react';
+
 import { MenuLayout } from '../MenuLayout';
 import { FlagThing } from '../animations/FlagThing';
 import { RamScreen } from '../routes/Ram';
-import LegalStuff from "../input/modals/SignInModal"
 
 interface Props {
     setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
 }
 
 const RamMenu = ({ setScreen }: Props) => {
-  const [showLegalStuff, setShowLegalStuff] = useState(false);
+ // const [showLegalStuff, setShowLegalStuff] = useState(false);
 
   return (
     <>
@@ -36,12 +35,6 @@ const RamMenu = ({ setScreen }: Props) => {
           <button className="button primary" onClick={() => setScreen("game")}>
             SPIL & VIND
           </button>
-
-          <button className="button text" onClick={() => setShowLegalStuff(true)}>
-            *Se konkurrencebetingelser her
-                  </button>
-
-                  <LegalStuff isShown={showLegalStuff} />
         </div>
       </MenuLayout>
     </>
