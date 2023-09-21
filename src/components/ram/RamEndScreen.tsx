@@ -6,7 +6,6 @@ import { MenuLayout } from "../MenuLayout";
 import HighscoreList from "../highscore/HighscoreList";
 import SignUpForm from "../input/forms/SignUpForm";
 import { RamScreen } from "../routes/Ram";
-import LegalStuff from "../input/modals/SignInModal"
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
@@ -16,7 +15,6 @@ interface Props {
 const RamEndScreen = ({ setScreen, score }: Props) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
-  const [showLegalStuff, setShowLegalStuff] = useState(false);
 
   const saveScore = useCallback(async () => {
     await insertScore(score);
@@ -67,12 +65,10 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
             </button>
             <button
               className="button text"
-              onClick={() => setShowLegalStuff(true)}
+              
             >
               *Se konkurrencebetingelser her
                       </button>
-
-                      <LegalStuff isShown={showLegalStuff} setIsShown={showLegalStuff} />
           </div>
         </>
       ) : (
