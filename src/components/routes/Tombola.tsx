@@ -13,6 +13,8 @@ const Tombola = () => {
   const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null); // Track which balloon is expanding
   const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false); // Track if any balloon is clicked
 
+
+
   useEffect(() => {
     (async () => {
       if (!hasPrize) return;
