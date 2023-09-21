@@ -19,9 +19,21 @@
 }
 
 @media screen and (orientation: landscape) {
-  .tombola {
-    height: 100vh;
-  }
+    .tombola {
+        width: 100vh;
+        width: 100svh;
+        height: 100vw;
+        height: 100svw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgb(177,177,177);
+        background: -moz-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+        background: -webkit-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+        background: radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b1b1b1",endColorstr="#afafaf",GradientType=1);
+    }
 }
 
 /* Tombola */
