@@ -6,12 +6,18 @@ import TombolaBalloon from "../TombolaBalloon";
 import { FlagThing } from "../animations/FlagThing";
 import Logo from "/images/logos/logo-color.svg";
 import PrizeConfetti from "../PrizeConfetti";
+import lockScreenOrientation from "../LockScreenOrientation";
 
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
   const [prize, setPrize] = useState<Prize | null>(null);
   const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null); // Track which balloon is expanding
   const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false); // Track if any balloon is clicked
+
+  useEffect(() => {
+    // Call the orientation lock function when the component mounts
+    lockScreenOrientation();
+  }, []);
 
   useEffect(() => {
     (async () => {
