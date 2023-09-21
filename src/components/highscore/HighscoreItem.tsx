@@ -12,7 +12,7 @@ const HighscoreItem = ({ rank, highscore }: Props) => {
       <span className="flex gap-3 items-center">
         <span className="text-gray-500">{rank}</span>
         <span>
-          {highscore.first_name} {highscore.last_name}
+                  {highscore.first_name} {highscore.last_name[0]}.
         </span>
       </span>
       <span>{formatScore(highscore.highscore)}</span>
