@@ -1,7 +1,7 @@
 const { Builder, By, until } = require("selenium-webdriver");
 
 // Define how many times you want to repeat the action
-const repeatCount = 5; // Change this number to the desired repetition count
+const repeatCount = 100; // Change this number to the desired repetition count
 
 async function performActionInBrowser() {
   let driver;
