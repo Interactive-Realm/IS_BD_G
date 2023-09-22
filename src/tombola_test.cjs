@@ -24,7 +24,7 @@ async function performActionInBrowser() {
       await driver.executeScript("arguments[0].click();", testButton);
 
       // Delay for a moment (you can adjust the time as needed)
-      await driver.sleep(2000); // 2 seconds
+      await driver.sleep(0); // 2 seconds
 
       // Log "Clicked Balloon" when the button is clicked
       console.log("Clicked Balloon");
