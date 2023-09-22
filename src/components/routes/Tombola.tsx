@@ -105,6 +105,7 @@ const Tombola = () => {
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
+          <button type="button" className="testButton"/>
         </p>
         <div className="tombola__balloons">
           <TombolaBalloon
@@ -121,6 +122,7 @@ const Tombola = () => {
               onContextMenu={handleContextMenu}
               
             />
+            
           </TombolaBalloon>
           <TombolaBalloon
             setHasPrize={setHasPrize}
@@ -135,6 +137,7 @@ const Tombola = () => {
               draggable={false}
               onContextMenu={handleContextMenu}
             />
+            
           </TombolaBalloon>
           <TombolaBalloon
             setHasPrize={setHasPrize}
