@@ -22,6 +22,9 @@ async function performActionInBrowser() {
     // Delay for a moment (you can adjust the time as needed)
     await driver.sleep(2000); // 2 seconds
 
+    // Log "Clicked Balloon" when the button is clicked
+    console.log("Clicked Balloon");
+
   } catch (error) {
     console.error("Error in browser instance:", error);
   } finally {
