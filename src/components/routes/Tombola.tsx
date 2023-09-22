@@ -105,7 +105,8 @@ const Tombola = () => {
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
-          <button type="button" className="testButton"/>
+          <button type="button" className="testButton" onClick={() => {
+    console.log("Button clicked");}}/>
         </p>
         <div className="tombola__balloons">
           <TombolaBalloon

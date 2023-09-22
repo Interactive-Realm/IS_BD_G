@@ -13,8 +13,13 @@ async function performActionInBrowser() {
     // Wait for the page to be fully loaded
     await driver.wait(until.elementLocated(By.className("testButton")));
 
-    // Find the button by its class name ("testButton") and click it
+    // Find the button by its class name ("testButton")
     const testButton = await driver.findElement(By.className("testButton"));
+
+    // Scroll the button into view using JavaScript
+    await driver.executeScript("arguments[0].scrollIntoView(true);", testButton);
+
+    // Click the button
     await testButton.click();
 
     // Delay for a moment (you can adjust the time as needed)
