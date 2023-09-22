@@ -10,13 +10,13 @@ async function performActionInBrowser() {
     // Launch a browser instance (in this case, Firefox)
     driver = await new Builder().forBrowser("firefox").build();
 
+    // Navigate to the actual web page URL
+    await driver.get('http://intersportgames.dk/tombola'); // Replace with the actual URL
+
+    // Wait for the page to be fully loaded
+    await driver.wait(until.elementLocated(By.className("testButton")));
+
     for (let i = 0; i < repeatCount; i++) {
-      // Navigate to the actual web page URL
-      await driver.get('http://intersportgames.dk/tombola'); // Replace with the actual URL
-
-      // Wait for the page to be fully loaded
-      await driver.wait(until.elementLocated(By.className("testButton")));
-
       // Find the button by its class name ("testButton")
       const testButton = await driver.findElement(By.className("testButton"));
 
@@ -28,12 +28,18 @@ async function performActionInBrowser() {
 
       // Log "Clicked Balloon" when the button is clicked
       console.log("Clicked Balloon");
-
-      // Close the browser
-      await driver.quit();
     }
   } catch (error) {
     console.error("Error in browser instance:", error);
+  } finally {
+    if (driver) {
+      try {
+        // Close the browser
+        await driver.quit();
+      } catch (quitError) {
+        console.error("Error while quitting the browser:", quitError);
+      }
+    }
   }
 }
 
