@@ -15,22 +15,23 @@ const Tombola = () => {
 
 
 
-  useEffect(() => {
-    (async () => {
-      if (!hasPrize) return;
-
+  const handleButtonClick = async () => {
+    try {
       const prize = await getPrice();
-
       if (prize) {
         setPrize(prize);
+        setHasPrize(true); // Assuming you want to set hasPrize to true when you get a prize.
       } else {
         setPrize({
           name: "Nitte",
           message: "Desværre ingen gevinst denne gang",
         });
       }
-    })();
-  }, [hasPrize]);
+    } catch (error) {
+      // Handle any errors that occur during getPrice() here.
+      console.error("Error fetching prize:", error);
+    }
+  };
 
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent the default context menu behavior
@@ -105,7 +106,7 @@ const Tombola = () => {
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
-          <button type="button" className="testButton"/>
+          <button type="button" className="testButton" onClick={handleButtonClick}/>
         </p>
         <div className="tombola__balloons">
           <TombolaBalloon
