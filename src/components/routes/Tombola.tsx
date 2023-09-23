@@ -68,7 +68,7 @@ const Tombola = () => {
   };
 
   let component;
-  if (prize) {
+  /*if (prize) {
     component = (
       <div className="tombola__result">
         <div className="tombola__result__prize">
@@ -117,7 +117,7 @@ const Tombola = () => {
         <PrizeConfetti/>
       </div>
     );
-  } else {
+  } else*/ if(prize) {
     component = (
       <div className="tombola__game">
         <FlagThing />
