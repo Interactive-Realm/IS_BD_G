@@ -1,6 +1,6 @@
 const { Builder, By, until } = require("selenium-webdriver");
 
-const repeatCount = 100; // Change this number to the desired repetition count
+const repeatCount = 1000; // Change this number to the desired repetition count
 
 async function performActionInBrowser() {
   let driver;
@@ -15,7 +15,7 @@ async function performActionInBrowser() {
     // Wait for the page to be fully loaded
     await driver.wait(until.elementLocated(By.className("testButton")));
 
-    for (let i = 0; i < repeatCount; i++) {
+    for (let i = 1; i < repeatCount; i++) {
       // Find the button by its class name ("testButton")
       const testButton = await driver.findElement(By.className("testButton"));
 
