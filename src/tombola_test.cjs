@@ -1,4 +1,6 @@
+import { getPrice } from "../../supabase-tombola";
 const { Builder, By, until } = require("selenium-webdriver");
+const [hasPrize, setHasPrize] = useState(false);
 
 // Define how many times you want to repeat the action
 const repeatCount = 100; // Change this number to the desired repetition count
@@ -28,6 +30,23 @@ async function performActionInBrowser() {
 
       // Log "Clicked Balloon" when the button is clicked
       console.log("Clicked Balloon");
+      useEffect(() => {
+        (async () => {
+          if (!hasPrize) return;
+    
+          const prize = await getPrice();
+    
+          if (prize) {
+            setPrize(prize);
+          } else {
+            setPrize({
+              name: "Nitte",
+              message: "Desværre ingen gevinst denne gang",
+            });
+          }
+        })();
+      }, [hasPrize]);
+
     }
   } catch (error) {
     console.error("Error in browser instance:", error);
