@@ -15,6 +15,23 @@ const Tombola = () => {
 
 
 
+  useEffect(() => {
+    (async () => {
+      if (!hasPrize) return;
+
+      const prize = await getPrice();
+
+      if (prize) {
+        setPrize(prize);
+      } else {
+        setPrize({
+          name: "Nitte",
+          message: "Desværre ingen gevinst denne gang",
+        });
+      }
+    })();
+  }, [hasPrize]);
+  
   const handleButtonClick = async () => {
     try {
       const prize = await getPrice();
