@@ -4,8 +4,8 @@ import { getPrice } from "../../supabase-tombola";
 import { Prize } from "../../types";
 import TombolaBalloon from "../TombolaBalloon";
 import { FlagThing } from "../animations/FlagThing";
-import Logo from "/images/logos/logo-color.svg";
-import PrizeConfetti from "../PrizeConfetti";
+//import Logo from "/images/logos/logo-color.svg";
+//import PrizeConfetti from "../PrizeConfetti";
 
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
@@ -68,7 +68,7 @@ const Tombola = () => {
   };
 
   let component;
-  if (prize) {
+  /*if (prize) {
     component = (
       <div className="tombola__result">
         <div className="tombola__result__prize">
@@ -117,7 +117,7 @@ const Tombola = () => {
         <PrizeConfetti/>
       </div>
     );
-  } else {
+  } else*/ if(prize) {
     component = (
       <div className="tombola__game">
         <FlagThing />
