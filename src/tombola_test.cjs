@@ -1,5 +1,4 @@
 const { Builder, By, until } = require("selenium-webdriver");
-const { getPrice } = require("./your-supabase-script"); // Import the getPrice function
 
 const repeatCount = 100; // Change this number to the desired repetition count
 
@@ -23,14 +22,9 @@ async function performActionInBrowser() {
       // Use JavaScript to trigger a click event on the button
       await driver.executeScript("arguments[0].click();", testButton);
 
-      // Call the getPrice function from your Supabase script
-      const prize = await getPrice();
 
       // Log "Clicked Balloon" when the button is clicked
       console.log("Clicked Balloon");
-
-      // Log the result of the getPrice function
-      console.log("Prize:", prize);
     }
   } catch (error) {
     console.error("Error in browser instance:", error);
