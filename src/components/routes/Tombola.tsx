@@ -13,7 +13,7 @@ const Tombola = () => {
   const [prize, setPrize] = useState<Prize | null>(null);
   const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null);
   const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false);
-  const [testingMode, setTestingMode] = useState(false); // Add testing mode state
+  const [testingMode, setTestingMode] = useState(true); // Add testing mode state
 
   useEffect(() => {
     (async () => {
