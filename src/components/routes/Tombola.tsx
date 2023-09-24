@@ -13,7 +13,7 @@ const Tombola = () => {
   const [prize, setPrize] = useState<Prize | null>(null);
   const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null);
   const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false);
-  const [testingMode, setTestingMode] = useState(true); // Add testing mode state
+  //const [testingMode, setTestingMode] = useState(true); // Add testing mode state
 
   useEffect(() => {
     (async () => {
@@ -32,11 +32,11 @@ const Tombola = () => {
     })();
   }, [hasPrize]);
 
-  const toggleTestingMode = () => {
+  /*const toggleTestingMode = () => {
     setTestingMode((prevTestingMode) => !prevTestingMode);
-  };
+  };*/
 
-  const handleButtonClick = async () => {
+  /*const handleButtonClick = async () => {
     try {
       const prize = await getPrice();
       if (prize) {
@@ -51,7 +51,7 @@ const Tombola = () => {
     } catch (error) {
       console.error("Error fetching prize:", error);
     }
-  };
+  };*/
 
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent the default context menu behavior
@@ -68,7 +68,7 @@ const Tombola = () => {
   };
 
   let component;
-  if (prize && !testingMode) { // Check if it's not in testing mode
+  if (prize) { // Check if it's not in testing mode
     component = (
       <div className="tombola__result">
         <div className="tombola__result__prize">
@@ -121,13 +121,6 @@ const Tombola = () => {
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
-          <button
-            type="button"
-            className="testButton"
-            onClick={handleButtonClick}
-          >
-            Click Me
-          </button>
         </p>
         <div className="tombola__balloons">
           <TombolaBalloon
@@ -207,9 +200,6 @@ const Tombola = () => {
 
   return (
     <div className="tombola">
-      <button onClick={toggleTestingMode}>
-        Toggle Testing Mode
-      </button>
       {component}
     </div>
   );
