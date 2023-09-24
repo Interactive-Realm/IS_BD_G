@@ -6,7 +6,6 @@ import Tombola from './components/routes/Tombola';
 function App() {
   return (
     <BrowserRouter>
-      <div className='is-background'></div>
       <Routes>
         <Route path="/" element={<Menu />} />
         <Route

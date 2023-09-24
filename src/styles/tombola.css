@@ -10,24 +10,20 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background: rgb(177,177,177);
-        background: -moz-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
-        background: -webkit-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
-        background: radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b1b1b1",endColorstr="#afafaf",GradientType=1);
     }
 }
 
 @media screen and (orientation: landscape) {
     .tombola {
         height: 100vh;
-        
+
     }
 }
 
 /* Tombola */
 .tombola {
   text-align: center;
+  overflow: hidden;
 }
 
 .tombola__result {
@@ -124,25 +120,22 @@
 }
 
 .tombola__game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20%;
+  display: grid;
+  grid-template-rows: auto 1fr;
   height: 100%;
 }
 
 .tombola__game__info {
-  position: fixed;
-  top: 1.25rem;
   font-size: min(3rem, 5vw);
   color: var(--gray);
+  margin-top: 2%;
 }
 
 .tombola__balloons {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  align-items: center;
+  height: 100;
 }
 
 .tombola__balloon {

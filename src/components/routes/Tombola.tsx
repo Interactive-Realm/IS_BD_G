@@ -111,14 +111,12 @@ const Tombola = () => {
             alt="ballon jakke"
           />
         </span>
-        <FlagThing />
         <PrizeConfetti />
       </div>
     );
   } else {
     component = (
       <div className="tombola__game">
-        <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
         </p>
@@ -200,6 +198,8 @@ const Tombola = () => {
 
   return (
     <div className="tombola">
+      <FlagThing />
+      <div className="is-background"></div>
       {component}
     </div>
   );
