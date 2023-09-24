@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import "../../styles/tombola.css";
 import { getPrice } from "../../supabase-tombola";
 import { Prize } from "../../types";
@@ -10,17 +11,16 @@ import PrizeConfetti from "../PrizeConfetti";
 const Tombola = () => {
   const [hasPrize, setHasPrize] = useState(false);
   const [prize, setPrize] = useState<Prize | null>(null);
-  const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null); // Track which balloon is expanding
-  const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false); // Track if any balloon is clicked
-
-
+  const [expandingBalloon, setExpandingBalloon] = useState<number | null>(null);
+  const [isAnyBalloonClicked, setIsAnyBalloonClicked] = useState(false);
+  const [testingMode, setTestingMode] = useState(true); // Add testing mode state
 
   useEffect(() => {
     (async () => {
       if (!hasPrize) return;
-
+  
       const prize = await getPrice();
-
+  
       if (prize) {
         setPrize(prize);
       } else {
@@ -32,25 +32,43 @@ const Tombola = () => {
     })();
   }, [hasPrize]);
 
+  const toggleTestingMode = () => {
+    setTestingMode((prevTestingMode) => !prevTestingMode);
+  };
+
+  const handleButtonClick = async () => {
+    try {
+      const prize = await getPrice();
+      if (prize) {
+        setPrize(prize);
+        setHasPrize(true);
+      } else {
+        setPrize({
+          name: "Nitte",
+          message: "Desværre ingen gevinst denne gang",
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching prize:", error);
+    }
+  };
+
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent the default context menu behavior
   };
 
   const handleBalloonClick = (balloonIndex: number) => {
     if (expandingBalloon === null) {
-      // If no balloon is expanding, allow this one to expand
       setIsAnyBalloonClicked(true);
       setExpandingBalloon(balloonIndex);
-      console.log("setting expanding balloon with index: " + balloonIndex);
     } else if (expandingBalloon === balloonIndex) {
-      // If the clicked balloon is already expanding, allow it to collapse
       setIsAnyBalloonClicked(false);
       setExpandingBalloon(null);
     }
   };
 
   let component;
-  if (prize) {
+  if (prize && !testingMode) { // Check if it's not in testing mode
     component = (
       <div className="tombola__result">
         <div className="tombola__result__prize">
@@ -59,7 +77,6 @@ const Tombola = () => {
             <span>{prize.message}</span>
           </p>
         </div>
-
         <span className="tombola__element tombola__element1">
           <img
             src="/images/assets/balloon_white.png"
@@ -94,9 +111,8 @@ const Tombola = () => {
             alt="ballon jakke"
           />
         </span>
-
         <FlagThing />
-        <PrizeConfetti/>
+        <PrizeConfetti />
       </div>
     );
   } else {
@@ -105,7 +121,13 @@ const Tombola = () => {
         <FlagThing />
         <p className="tombola__game__info blue-bold">
           <span>POP EN BALLON</span>
-          <button type="button" className="testButton"/>
+          <button
+            type="button"
+            className="testButton"
+            onClick={handleButtonClick}
+          >
+            Click Me
+          </button>
         </p>
         <div className="tombola__balloons">
           <TombolaBalloon
@@ -120,9 +142,7 @@ const Tombola = () => {
               alt=""
               draggable={false}
               onContextMenu={handleContextMenu}
-              
             />
-            
           </TombolaBalloon>
           <TombolaBalloon
             setHasPrize={setHasPrize}
@@ -137,7 +157,6 @@ const Tombola = () => {
               draggable={false}
               onContextMenu={handleContextMenu}
             />
-            
           </TombolaBalloon>
           <TombolaBalloon
             setHasPrize={setHasPrize}
@@ -188,6 +207,9 @@ const Tombola = () => {
 
   return (
     <div className="tombola">
+      <button onClick={toggleTestingMode}>
+        Toggle Testing Mode
+      </button>
       {component}
     </div>
   );
