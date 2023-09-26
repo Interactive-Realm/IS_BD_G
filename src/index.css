@@ -276,23 +276,23 @@ h2 {
 }
 
 .balloon-slow-2 {
-  animation: RamMoveBalloon 3.8s linear;
+  animation: RamMoveBalloon 3.5s linear;
 }
 
 .balloon-medium-1 {
-  animation: RamMoveBalloon 3.2s linear;
+  animation: RamMoveBalloon 2.5s linear;
 }
 
 .balloon-medium-2 {
-  animation: RamMoveBalloon 3s linear;
-}
-
-.balloon-fast-1 {
   animation: RamMoveBalloon 2s linear;
 }
 
+.balloon-fast-1 {
+  animation: RamMoveBalloon 1.5s linear;
+}
+
 .balloon-fast-2 {
-  animation: RamMoveBalloon 1.8s linear;
+  animation: RamMoveBalloon 1.3s linear;
 }
 
 @media only screen and (min-width: 400px) {

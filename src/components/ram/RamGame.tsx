@@ -27,7 +27,7 @@ const RamGame = ({ setScreen, score, setScore }: Props) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [wave]);
 
   useEffect(() => {
     if (time <= 0) setScreen("end-screen");
@@ -46,6 +46,8 @@ const RamGame = ({ setScreen, score, setScore }: Props) => {
     if (waveIndex >= waves.length) return;
 
     setWave(waves[waveIndex]);
+    console.log("WAVE:", waves[waveIndex])
+
   }, [waveIndex]);
 
   return (

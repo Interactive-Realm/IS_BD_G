@@ -1,4 +1,4 @@
-import { useCallback, useEffect, /*useMemo*/ useState } from "react";
+import { useEffect, /*useMemo*/ useState } from "react";
 import { Wave } from "../data/waveData";
 import { Balloon as BalloonType } from "../types";
 import Balloon from "./Balloon";
@@ -16,17 +16,10 @@ const clamp = (num: number, min: number, max: number) =>
 
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
-  const [balloonId, setBalloonId] = useState(0);
 
-  const createBalloon = useCallback(() => {
-    if (balloons.length > 50) return;
-
-    setBalloonId((prevId) => prevId + 1);
-  }, [balloonId]);
-
-  useEffect(() => {
+  const createBalloon = () => {
     const newBalloon = {
-      id: balloonId,
+      id: Date.now(),
       x: clamp(Math.random() * 100, 5, 95),
       y: 100 + Math.random() * 20,
       speed: Math.max(
@@ -34,11 +27,13 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
         Math.random() * wave.maxBalloonSpeed
       ),
       class: wave.classes[Math.floor(Math.random() * wave.classes.length)],
-      destroy: false,
     };
 
-    setBalloons((balloons) => [...balloons, newBalloon]);
-  }, [balloonId]);
+    setBalloons((bs) => {
+      if (bs.length > 40) return [...bs.slice(1), newBalloon];
+      return [...bs, newBalloon];
+    });
+  };
 
   const spawner = () => {
     createBalloon();
@@ -52,15 +47,14 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
       clearInterval(updateInterval);
       clearInterval(waveTimeout);
     };
-  }, []);
+  }, [wave]);
 
   const handleClick = (balloon: BalloonType) => {
-      balloon.destroy = true;
-      setScore((s) => s + 1);
+    setScore((s) => s + 1);
   };
 
   const handleDestroy = (balloon: BalloonType) => {
-    setBalloons(balloons.filter((b) => b.id !== balloon.id && balloon.destroy));
+    setBalloons(balloons.filter((b) => b.id !== balloon.id));
   };
 
   return (
