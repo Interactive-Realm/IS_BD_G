@@ -49,7 +49,7 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
     };
   }, [wave]);
 
-  const handleClick = (balloon: BalloonType) => {
+  const handleClick = () => {
     setScore((s) => s + 1);
   };
 
