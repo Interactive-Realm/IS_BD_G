@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getGameDuration, waves } from "../../data/waveData";
 import { formatScore } from "../../utils";
 import BalloonGenerator from "../BalloonGenerator";
-import { FlagThing } from '../animations/FlagThing';
+import { FlagThing } from "../animations/FlagThing";
 import { RamScreen } from "../routes/Ram";
 
 let interval: NodeJS.Timeout;
@@ -46,19 +46,20 @@ const RamGame = ({ setScreen, score, setScore }: Props) => {
     if (waveIndex >= waves.length) return;
 
     setWave(waves[waveIndex]);
-    console.log("WAVE:", waves[waveIndex])
-
+    console.log("WAVE:", waves[waveIndex]);
   }, [waveIndex]);
 
   return (
-      <div>
-          <FlagThing />
-      <span className="ram__hud ram__time no-select">
-        00:{formatScore(time, 2)}
-      </span>
-      <span className="ram__hud ram__score no-select">
-        {formatScore(score)}
-      </span>
+    <div>
+      <FlagThing />
+      <div className="ram__hud">
+        <span className="ram__time no-select">
+          00:{formatScore(time, 2)}
+        </span>
+        <span className="ram__score no-select">
+          {formatScore(score)}
+        </span>
+      </div>
       <div>
         <BalloonGenerator setScore={setScore} wave={wave} />
       </div>
