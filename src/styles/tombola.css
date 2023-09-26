@@ -14,10 +14,22 @@
 }
 
 @media screen and (orientation: landscape) {
-    .tombola {
-        height: 100vh;
-    }
+  .tombola {
+      position: absolute;
+      transform: none; /* Reset any rotation */
+      display: flex; /* Use flexbox for layout */
+      flex-direction: column; /* Or use other flex properties as needed */
+      justify-content: center; /* Center elements vertically */
+      align-items: center; /* Center elements horizontally */
+      width: 100%;
+      height: 100%;
+      
+  }
+  
+  /* Apply styles to individual elements as needed for landscape mode */
 }
+
+
 
 /* Tombola */
 .tombola {
@@ -67,30 +79,29 @@
 }
 
 .tombola__element1 {
-  top: 10%;
-  left: -20%;
+  top: 5%;
+  left: 0%;
 }
 
 .tombola__element2 {
-  top: -20%;
-  left: 15%;
+  top: -5%;
+  left: 25%;
 }
 
 .tombola__element3 {
-  top: 50%;
-  left: 30%;
+  top: 40%;
+  right: 30%;
 }
 
 .tombola__element4 {
-  top: -5%;
-  left: 50%;
+  top: 4%;
+  right: 0%;
 }
 
 .tombola__element5 {
-  top: 35%;
-  left: -7%;
+  top: 40%;
+  left: 0rem;
 }
-
 @media only screen and (max-height: 700px) {
   .tombola__element5 {
     scale: 0.9;
@@ -176,6 +187,7 @@
     scale: 0.5;
   }
 }
+
 .tombola__logo {
   width: min(75%, 500px);
   background: var(--white);
