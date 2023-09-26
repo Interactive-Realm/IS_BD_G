@@ -19,61 +19,56 @@ Math.min(Math.max(num, min), max);
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
   const [poppedBalloons, setPoppedBalloons] = useState<BalloonType[]>([]);
+  const [balloonId, setBalloonId] = useState(0);
 
-  const createBalloon = useCallback((): BalloonType => {
-    return {
-      color: 'blue',
+  const createBalloon = useCallback(() => {
+    if (balloons.length > 50) return;
+
+    const newBalloon = {
+      id: balloonId,
       x: clamp(Math.random() * 100, 5, 95),
       y: 100 + Math.random() * 20,
       speed: Math.max(
         wave.minBalloonSpeed,
         Math.random() * wave.maxBalloonSpeed
-      ),
-    };
-  }, [wave.minBalloonSpeed, wave.maxBalloonSpeed]);
+        ),
+      };
+      console.log(balloons, balloonId)
+    setBalloons((balloons) => [...balloons, newBalloon]);
+    setBalloonId((prevId) => prevId + 1);
+  }, [balloonId]);
 
-  const spawner = useCallback(() => {
-    setBalloons((balloons) => [...balloons, createBalloon()]);
+  const spawner = () => {
+    createBalloon();
     waveTimeout = setTimeout(spawner, wave.spawnInterval);
-  }, [wave, createBalloon]);
+  };
 
   useEffect(() => {
-    updateInterval = setInterval(() => {
-      setBalloons((balloons) => {
-        return balloons
-          .map((balloon) => {
-            balloon.y -= balloon.speed;
-            return balloon;
-          })
-          .filter((balloon) => balloon.y >= -100);
-      });
-    }, 1 / 60);
-
-    spawner();
+    waveTimeout = setTimeout(spawner, wave.spawnInterval);
 
     return () => {
       clearInterval(updateInterval);
       clearInterval(waveTimeout);
     };
-  }, [spawner, wave.minBalloonSpeed, wave.maxBalloonSpeed]);
+  }, []);
 
-  const handleClick = (index: number) => {
-    setPoppedBalloons([...poppedBalloons, balloons[index]])
-    setBalloons(balloons.filter((_, i) => i !== index));
+  const handleClick = (balloon: BalloonType) => {
+    setPoppedBalloons([...poppedBalloons, balloon])
+    setBalloons(balloons.filter((b) => b.id !== balloon.id));
     setScore((s) => s + 1);
   };
 
-  const handleDestroy = (index: number) => {
-    setPoppedBalloons(poppedBalloons.filter((_, i) => i !== index));
+  const handleDestroy = (balloon: BalloonType) => {
+    setPoppedBalloons(poppedBalloons.filter((b) => b.id !== balloon.id));
   };
 
   return (
     <div className="balloon-container">
-      {balloons.map((balloon, i) => (
-        <Balloon key={i} balloon={balloon} handleClick={() => handleClick(i)} />
+      {balloons.map((balloon) => (
+        <Balloon key={balloon.id} balloon={balloon} handleClick={() => handleClick(balloon)} />
       ))}
-      {poppedBalloons.map((balloon, i) => (
-        <PoppedBalloon key={i} balloon={balloon} handleDestroy={() => handleDestroy(i)} />
+      {poppedBalloons.map((balloon) => (
+        <PoppedBalloon key={balloon.id} balloon={balloon}  handleDestroy={() => handleDestroy(balloon)} />
       ))}
     </div>
   );

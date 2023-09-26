@@ -32,10 +32,10 @@ html {
   opacity: 0.90;
   inset: 0;
   z-index: -8888;
-  background: rgb(177,177,177);
-  background: -moz-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
-  background: radial-gradient(circle, rgba(177,177,177,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+  background: rgb(200,200,200);
+  background: -moz-radial-gradient(circle, rgba(200,200,200,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(200,200,200,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
+  background: radial-gradient(circle, rgba(200,200,200,1) 0%, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b1b1b1",endColorstr="#afafaf",GradientType=1);
 }
 
@@ -102,28 +102,21 @@ h2 {
 
 /* Layouts */
 .menu-layout {
-  height: 100vh;
   display: grid;
-  /*grid-template-rows:auto 1fr auto;*/
-  margin: 0;
+  height: 100vh;
 }
 
 .menu-layout main {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: flex-start;
   overflow-y: scroll;
-  height: 100%;
   padding-top: 1rem;
-  max-width: 500px;
-  margin-inline: auto;
 }
 
-.menu-layout main img {
-  width: 100%;
-  object-fit: contain;
+.menu-layout__content {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin-inline: auto;
 }
 
 .menu-title {
@@ -132,32 +125,19 @@ h2 {
   line-height: calc(6rem);
 }
 
-.menu-layout .menu-footer-logo {
-  position: relative;
-  background: white;
-  padding: 0.5rem;
-  left: 0;
-  align-content: center;
-  z-index: 10;
-  inset-inline: 0;
-  display: block;
-  text-align: center;
-  padding: 0.5rem;
-  width: 100%;
-  height: 50%;
+.menu-layout footer {
+  max-height: min-content;
+  height: 100%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  padding: 0.25rem 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.menu-footer-placeholder {
-  /*width: 100%;
-  height: auto;*/
-}
-
-.menu-logo {
-  bottom: 0;
-  height: 50%;
-  object-fit: cover;  
-  margin-left: auto;
-  margin-right: auto;
+.menu-layout footer img {
+  object-fit: cover;
+  max-width: 500px;
 }
 
 /* RAM Menu */
@@ -191,6 +171,7 @@ h2 {
 .highscore-list {
   display: grid;
   gap: 0.25rem;
+  width: 100%;
 }
 
 .highscore-list__item {
@@ -234,6 +215,8 @@ h2 {
   /* Remove tap highlighting */
   -webkit-tap-highlight-color: transparent; /* For Webkit-based browsers like Safari */
   tap-highlight-color: transparent; /* For other browsers */
+
+  animation: RamMoveBalloon 5s linear;
 }
 
 .balloon img {
@@ -241,6 +224,16 @@ h2 {
   top: 50%;
   scale: 3;
   pointer-events: none;
+}
+
+@keyframes RamMoveBalloon {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -100%;
+  }
+
 }
 
 /* Modal */
@@ -340,6 +333,9 @@ form .error {
   display: grid;
   place-items: center;
   gap: 0.5rem;
+}
+
+.ram {
 }
 
 .ram__hud {
@@ -456,4 +452,5 @@ form .error {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  max-width: 500px;
 }

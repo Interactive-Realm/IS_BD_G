@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { getGameDuration, waves } from "../../data/waveData";
 import { formatScore } from "../../utils";
 import BalloonGenerator from "../BalloonGenerator";
-import { RamScreen } from "../routes/Ram";
 import { FlagThing } from '../animations/FlagThing';
+import { RamScreen } from "../routes/Ram";
 
 let interval: NodeJS.Timeout;
 

@@ -10,9 +10,10 @@ import { RamScreen } from "../routes/Ram";
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
   score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const RamEndScreen = ({ setScreen, score }: Props) => {
+const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
 
@@ -34,7 +35,8 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
   };
 
   const handlePlayAgain = async () => {
-    await saveScore();
+    if (score > 0) await saveScore();
+    setScore(0);
     setScreen("game");
   };
 
@@ -63,12 +65,9 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
             <button className="button primary" onClick={handlePlayAgain}>
               SPIL IGEN
             </button>
-            <button
-              className="button text"
-              
-            >
+            <button className="button text">
               *Se konkurrencebetingelser her
-                      </button>
+            </button>
           </div>
         </>
       ) : (
@@ -84,9 +83,7 @@ const RamEndScreen = ({ setScreen, score }: Props) => {
             INTERSPORT. Medlemskabet er gratis og du kan til en hver tid afmelde
             dig igen.
           </p>
-                      <SignUpForm onSignUp={handleSignUp} />
-
-                      
+          <SignUpForm onSignUp={handleSignUp} />
         </>
       )}
     </MenuLayout>
