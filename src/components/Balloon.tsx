@@ -9,20 +9,19 @@ type Props = {
 
 const Balloon = ({ handleClick, handleDestroy, balloon }: Props) => {
   const [isPopping, setIsPopping] = useState(false);
-  
+
   const style: React.CSSProperties & { [key: string]: unknown } = {
     "--left": `${balloon.x}%`,
     top: `${balloon.y}%`,
   };
-  
+
   const handlePop = () => {
+    if (isPopping) return;
+
     handleClick();
     setIsPopping(true);
-
-    setTimeout(() => {
-      handleDestroy();
-    }, 100)
-  }
+    setTimeout(handleDestroy, 100);
+  };
 
   return (
     <span
@@ -33,7 +32,11 @@ const Balloon = ({ handleClick, handleDestroy, balloon }: Props) => {
       onClick={handlePop}
     >
       <img
-        src={isPopping ? "/images/assets/popanim_single_frames/popanim_frame_5.png" : "/images/assets/balloon_red_600.png"}
+        src={
+          isPopping
+            ? "/images/assets/popanim_single_frames/popanim_frame_5.png"
+            : "/images/assets/balloon_red_600.png"
+        }
         alt="ballon"
         draggable={false}
       />

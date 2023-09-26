@@ -1,15 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-@font-face{
-  font-family:"DIN Medium";
-  src:url("/fonts/medium/din-medium.eot?#iefix");
-  src:url("/fonts/medium/din-medium.eot?#iefix") format("eot"),url("/fonts/medium/din-medium.woff2") format("woff2"),url("/fonts/medium/din-medium.ttf") format("truetype"),url("/fonts/medium/din-medium.svg#/fonts/medium/din-medium") format("svg");
-} */
 
 @font-face {
-  font-family: "DIN Medium";
   src: url("/fonts/medium/din-medium.ttf") format("truetype");
 }
 
@@ -152,7 +145,7 @@ h2 {
 .menu-title {
   box-sizing: border-box;
   font-size: 3rem;
-  line-height: 4.5rem;
+  line-height: 4rem;
 }
 
 .menu__konkurrencebetingelser {
@@ -163,7 +156,7 @@ h2 {
   .menu-title {
     box-sizing: border-box;
     font-size: 3.5rem;
-    line-height: 5.3rem;
+    line-height: 4.5rem;
   }
 } 
 
@@ -279,23 +272,23 @@ h2 {
 }
 
 .balloon-slow-2 {
-  animation: RamMoveBalloon 3.8s linear;
+  animation: RamMoveBalloon 3.5s linear;
 }
 
 .balloon-medium-1 {
-  animation: RamMoveBalloon 3.2s linear;
+  animation: RamMoveBalloon 2.5s linear;
 }
 
 .balloon-medium-2 {
-  animation: RamMoveBalloon 3s linear;
-}
-
-.balloon-fast-1 {
   animation: RamMoveBalloon 2s linear;
 }
 
+.balloon-fast-1 {
+  animation: RamMoveBalloon 1.5s linear;
+}
+
 .balloon-fast-2 {
-  animation: RamMoveBalloon 1.8s linear;
+  animation: RamMoveBalloon 1.3s linear;
 }
 
 @media only screen and (min-width: 400px) {
@@ -401,6 +394,7 @@ form .error {
   width: 100%;
   max-width: max-content;
   border-radius: 50px;
+  transition: background 300ms ease-in-out;
 }
 
 .button.primary {
@@ -436,20 +430,59 @@ form .error {
 
 .ram__hud {
   position: fixed;
-  top: 1.25rem;
-  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  top: 0rem;
+  font-size: 2.4rem;
   font-weight: 700;
   z-index: 8888;
   color: var(--white);
+  padding-inline: 1.25rem;
+  inset-inline: 0;
+  align-items: center;
+  pointer-events: none;
 }
 
-.ram__time {
-  left: 1.25rem;
-}
+@media only screen and (max-width: 260px) {
+  .ram__hud {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
-.ram__score {
-  right: 1.25rem;
-}
+  .ram__time {
+    font-size: 2rem;
+  }
+
+  .ram__score {
+    font-size: 3rem;
+  }
+} 
+
+@media only screen and (min-width: 260px) {
+  .ram__hud {
+    position: fixed;
+    display: flex;
+    top: 0.5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    z-index: 8888;
+    color: var(--white);
+  }
+
+  .ram__time {
+    left: 1.25rem;
+  }
+  
+  .ram__score {
+    right: 1.25rem;
+  }
+} 
+
+@media only screen and (min-width: 480px) {
+  .ram__hud {
+    font-size: 3rem;
+  }
+} 
 
 .countdown-container {
   position: fixed;

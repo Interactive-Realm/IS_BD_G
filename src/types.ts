@@ -25,6 +25,5 @@ export type Balloon = {
   x: number;
   y: number;
   speed: number;
-  destroy: boolean;
   class: string;
 };
