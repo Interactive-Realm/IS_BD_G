@@ -79,9 +79,8 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
             For at deltage i konkurrencen skal du udfylde nedenstående felter.
           </p>
           <p>
-            Ved deltagelse i konkurrencen tilmelder du dig samtidig Club
-            INTERSPORT. Medlemskabet er gratis og du kan til en hver tid afmelde
-            dig igen.
+          Ved at klikke på "Deltag i konkurrencen" accepterer du at modtage INTERSPORTS nyhedsbrev fra Club INTERSPORT. 
+          Nyhedsbrevet indeholder nyheder og tilbud fra INTERSPORTs sortiment. Samtykket kan til enhver tid trækkes tilbage.
           </p>
           <SignUpForm onSignUp={handleSignUp} />
         </>

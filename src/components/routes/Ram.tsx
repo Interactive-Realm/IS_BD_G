@@ -7,7 +7,7 @@ import RamMenu from "../ram/RamMenu";
 export type RamScreen = "menu" | "game" | "end-screen";
 
 const Ram = () => {
-  const [screen, setScreen] = useState<RamScreen>("menu");
+  const [screen, setScreen] = useState<RamScreen>("end-screen");
   const [score, setScore] = useState(0);
 
   let component;

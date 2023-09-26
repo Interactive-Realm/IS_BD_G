@@ -61,7 +61,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
         )}
       </label>
       <label>
-        Efternavn
         <input
           type="text"
           {...register("lastName", { required: "skal udfyldes" })}
@@ -70,7 +69,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
       </label>
       <label>
-        Telefon nr.
         <input
           type="tel"
           {...register("phone", { required: "skal udfyldes" })}
@@ -79,7 +77,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
         {errors.phone && <p className="error">{errors.phone.message}</p>}
       </label>
       <label>
-        Email
         <input
           type="text"
           {...register("email", {
@@ -99,10 +96,10 @@ const SignUpForm = ({ onSignUp }: Props) => {
       </div>
       <div className="input-checkbox">
         <input {...register("checkbox")} type="checkbox" value="B" />
-        Jeg samtykker til at melde mig ind i <a href="">Club INTERSPORT</a>.
+        Jeg samtykker til at modtage nyhedsbreve fra CLUB Intersport.
       </div>
       <button className="button primary" type="submit">
-        OPRET BRUGER
+        TILMED & DELTAG
       </button>
       {signInError !== "" && <p className="error">{signInError}</p>}
     </form>
