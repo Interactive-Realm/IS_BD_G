@@ -25,8 +25,91 @@
       height: 100%;
       
   }
-  
-  /* Apply styles to individual elements as needed for landscape mode */
+  @media only screen and (max-height: 700px) {
+    .tombola__element5 {
+      scale: 0.9;
+    }
+    .tombola__element4 {
+      scale: 0.9;
+    }
+    .tombola__element3 {
+      scale: 0.9;
+    }
+    .tombola__element2 {
+      scale: 0.9;
+    }
+    .tombola__element1 {
+      scale: 0.9;
+    }
+  }
+  @media only screen and (max-height: 600px) {
+    .tombola__element5 {
+      scale: 0.8;
+    }
+    .tombola__element4 {
+      scale: 0.9;
+    }
+    .tombola__element3 {
+      scale: 0.8;
+    }
+    .tombola__element2 {
+      scale: 0.8;
+    }
+    .tombola__element1 {
+      scale: 0.8;
+    }
+  }
+    @media only screen and (max-height: 500px) {
+      .tombola__element5 {
+        scale: 0.7;
+      }
+      .tombola__element4 {
+        scale: 0.8;
+      }
+      .tombola__element3 {
+        scale: 0.7;
+      }
+      .tombola__element2 {
+        scale: 0.7;
+      }
+      .tombola__element1 {
+        scale: 0.7;
+      }
+  }
+  @media only screen and (max-height: 400px) {
+    .tombola__element5 {
+      scale: 0.6;
+    }
+    .tombola__element4 {
+      scale: 0.7;
+    }
+    .tombola__element3 {
+      scale: 0.6;
+    }
+    .tombola__element2 {
+      scale: 0.6;
+    }
+    .tombola__element1 {
+      scale: 0.6;
+    }
+  }
+  @media only screen and (max-height: 300px) {
+    .tombola__element5 {
+      scale: 0.4;
+    }
+    .tombola__element4 {
+      scale: 0.5;
+    }
+    .tombola__element3 {
+      scale: 0.5;
+    }
+    .tombola__element2 {
+      scale: 0.5;
+    }
+    .tombola__element1 {
+      scale: 0.5;
+    }
+  }
 }
 
 
@@ -102,91 +185,7 @@
   top: 40%;
   left: 0rem;
 }
-@media only screen and (max-height: 700px) {
-  .tombola__element5 {
-    scale: 0.9;
-  }
-  .tombola__element4 {
-    scale: 0.9;
-  }
-  .tombola__element3 {
-    scale: 0.9;
-  }
-  .tombola__element2 {
-    scale: 0.9;
-  }
-  .tombola__element1 {
-    scale: 0.9;
-  }
-}
-@media only screen and (max-height: 600px) {
-  .tombola__element5 {
-    scale: 0.8;
-  }
-  .tombola__element4 {
-    scale: 0.9;
-  }
-  .tombola__element3 {
-    scale: 0.8;
-  }
-  .tombola__element2 {
-    scale: 0.8;
-  }
-  .tombola__element1 {
-    scale: 0.8;
-  }
-}
-  @media only screen and (max-height: 500px) {
-    .tombola__element5 {
-      scale: 0.7;
-    }
-    .tombola__element4 {
-      scale: 0.8;
-    }
-    .tombola__element3 {
-      scale: 0.7;
-    }
-    .tombola__element2 {
-      scale: 0.7;
-    }
-    .tombola__element1 {
-      scale: 0.7;
-    }
-}
-@media only screen and (max-height: 400px) {
-  .tombola__element5 {
-    scale: 0.6;
-  }
-  .tombola__element4 {
-    scale: 0.7;
-  }
-  .tombola__element3 {
-    scale: 0.6;
-  }
-  .tombola__element2 {
-    scale: 0.6;
-  }
-  .tombola__element1 {
-    scale: 0.6;
-  }
-}
-@media only screen and (max-height: 300px) {
-  .tombola__element5 {
-    scale: 0.4;
-  }
-  .tombola__element4 {
-    scale: 0.5;
-  }
-  .tombola__element3 {
-    scale: 0.5;
-  }
-  .tombola__element2 {
-    scale: 0.5;
-  }
-  .tombola__element1 {
-    scale: 0.5;
-  }
-}
+
 
 .tombola__logo {
   width: min(75%, 500px);
