@@ -79,21 +79,21 @@ const Tombola = () => {
         </div>
         <span className="tombola__element tombola__element1">
           <img
-            src="/images/assets/balloon_white.png"
+            src="/images/assets/balloon_white_string.png"
             alt="ballon jakke"
             draggable={false}
           />
         </span>
         <span className="tombola__element tombola__element2">
           <img
-            src="/images/assets/balloon_white.png"
+            src="/images/assets/balloon_white_string.png"
             alt="ballon jakke"
             draggable={false}
           />
         </span>
         <span className="tombola__element tombola__element3">
           <img
-            src="/images/assets/balloon_white.png"
+            src="/images/assets/balloon_white_string.png"
             alt="ballon jakke"
             draggable={false}
           />
