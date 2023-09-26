@@ -1,9 +1,7 @@
-import { useCallback, useEffect, /*useMemo*/ useState } from 'react';
-import { Wave } from '../data/waveData';
-import { Balloon as BalloonType } from '../types';
-import Balloon from './Balloon';
-import PoppedBalloon from './PoppedBalloon';
-
+import { useCallback, useEffect, /*useMemo*/ useState } from "react";
+import { Wave } from "../data/waveData";
+import { Balloon as BalloonType } from "../types";
+import Balloon from "./Balloon";
 
 type Props = {
   setScore: React.Dispatch<React.SetStateAction<number>>;
@@ -14,16 +12,19 @@ let updateInterval: NodeJS.Timeout;
 let waveTimeout: NodeJS.Timeout;
 
 const clamp = (num: number, min: number, max: number) =>
-Math.min(Math.max(num, min), max);
+  Math.min(Math.max(num, min), max);
 
 const BalloonGenerator = ({ setScore, wave }: Props) => {
   const [balloons, setBalloons] = useState<BalloonType[]>([]);
-  const [poppedBalloons, setPoppedBalloons] = useState<BalloonType[]>([]);
   const [balloonId, setBalloonId] = useState(0);
 
   const createBalloon = useCallback(() => {
     if (balloons.length > 50) return;
 
+    setBalloonId((prevId) => prevId + 1);
+  }, [balloonId]);
+
+  useEffect(() => {
     const newBalloon = {
       id: balloonId,
       x: clamp(Math.random() * 100, 5, 95),
@@ -31,11 +32,12 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
       speed: Math.max(
         wave.minBalloonSpeed,
         Math.random() * wave.maxBalloonSpeed
-        ),
-      };
-      console.log(balloons, balloonId)
+      ),
+      class: wave.classes[Math.floor(Math.random() * wave.classes.length)],
+      destroy: false,
+    };
+
     setBalloons((balloons) => [...balloons, newBalloon]);
-    setBalloonId((prevId) => prevId + 1);
   }, [balloonId]);
 
   const spawner = () => {
@@ -53,22 +55,23 @@ const BalloonGenerator = ({ setScore, wave }: Props) => {
   }, []);
 
   const handleClick = (balloon: BalloonType) => {
-    setPoppedBalloons([...poppedBalloons, balloon])
-    setBalloons(balloons.filter((b) => b.id !== balloon.id));
-    setScore((s) => s + 1);
+      balloon.destroy = true;
+      setScore((s) => s + 1);
   };
 
   const handleDestroy = (balloon: BalloonType) => {
-    setPoppedBalloons(poppedBalloons.filter((b) => b.id !== balloon.id));
+    setBalloons(balloons.filter((b) => b.id !== balloon.id && balloon.destroy));
   };
 
   return (
     <div className="balloon-container">
       {balloons.map((balloon) => (
-        <Balloon key={balloon.id} balloon={balloon} handleClick={() => handleClick(balloon)} />
-      ))}
-      {poppedBalloons.map((balloon) => (
-        <PoppedBalloon key={balloon.id} balloon={balloon}  handleDestroy={() => handleDestroy(balloon)} />
+        <Balloon
+          key={balloon.id}
+          balloon={balloon}
+          handleClick={() => handleClick(balloon)}
+          handleDestroy={() => handleDestroy(balloon)}
+        />
       ))}
     </div>
   );

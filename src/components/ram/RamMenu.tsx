@@ -1,22 +1,25 @@
-
-import { MenuLayout } from '../MenuLayout';
-import { RamScreen } from '../routes/Ram';
+import { MenuLayout } from "../MenuLayout";
+import { RamScreen } from "../routes/Ram";
 
 interface Props {
-    setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
+  setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
 }
 
 const RamMenu = ({ setScreen }: Props) => {
   return (
     <>
       <MenuLayout>
-        <h1 className='is-bold menu-title'>
-          <span className='blue'>POP BALLONER</span>
+        <h1 className="is-bold menu-title">
+          <span className="blue">POP BALLONER</span>
           <br />
-          <span className='red'>& VIND!</span>
+          <span className="red">& VIND!</span>
         </h1>
 
-        <img className='menu__main-prize' src="/images/assets/RAM_MockUp_Elements/tekst_hovedpræmie.png" alt="hovedpræmie - gavekort til intersport få 3500 kroner" />
+        <img
+          className="menu__main-prize"
+          src="/images/assets/RAM_MockUp_Elements/tekst_hovedpræmie.png"
+          alt="hovedpræmie - gavekort til intersport få 3500 kroner"
+        />
 
         <div className="menu__prizes-info">
           <h2>PRÆMIER HVER UGE:</h2>
@@ -32,10 +35,9 @@ const RamMenu = ({ setScreen }: Props) => {
             SPIL & VIND
           </button>
 
-          <button className="button text" >
-            *Se konkurrencebetingelser her
-                  </button>
-
+          <a href="https://www.intersport.dk/fodselsdagsspil.html" className="button text menu__konkurrencebetingelser">
+            *Se konkurrencebetingelser
+          </a>
         </div>
       </MenuLayout>
     </>

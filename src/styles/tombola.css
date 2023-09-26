@@ -16,7 +16,6 @@
 @media screen and (orientation: landscape) {
     .tombola {
         height: 100vh;
-
     }
 }
 
@@ -95,7 +94,7 @@
 @media only screen and (max-height: 450px) {
   .tombola__element5 {
     bottom: -8rem;
-  left: -4rem;
+    left: -4rem;
   }
 } 
 
@@ -104,7 +103,7 @@
     bottom: -8rem;
     right: 25%;
   }
-} 
+}
 
 @media only screen and (max-height: 360px) {
   .tombola__element2 {
