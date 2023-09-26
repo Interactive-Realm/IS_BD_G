@@ -5,10 +5,6 @@
       "destination": "/tombola"
     },
     {
-      "source": "/ram(.*)",
-      "destination": "/ram"
-    },
-    {
       "source": "/(.*)",
       "destination": "/"
     }

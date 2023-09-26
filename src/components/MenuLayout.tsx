@@ -5,10 +5,14 @@ type Props = {
 export const MenuLayout = ({ children }: Props) => {
   return (
     <div className="menu-layout">
-      <main>{children}</main>
+      <main>
+        <div className="menu-layout__content">
+          {children}
+        </div>
+      </main>
+      <footer>
+        <img className="menu-logo" src="/images/logos/logo-payoff-color.svg" alt="intersport logo" />
+      </footer>
     </div>
   );
 };
-<div className="menu-footer-logo">
-        <img className="menu-logo" src="/images/logos/logo-payoff-color.svg" alt="intersport logo" />
-      </div>

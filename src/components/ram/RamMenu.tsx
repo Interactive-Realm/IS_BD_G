@@ -1,6 +1,5 @@
 
 import { MenuLayout } from '../MenuLayout';
-import { FlagThing } from '../animations/FlagThing';
 import { RamScreen } from '../routes/Ram';
 
 interface Props {
@@ -8,10 +7,8 @@ interface Props {
 }
 
 const RamMenu = ({ setScreen }: Props) => {
-
   return (
     <>
-      <FlagThing />
       <MenuLayout>
         <h1 className='is-bold menu-title'>
           <span className='blue'>POP BALLONER</span>
