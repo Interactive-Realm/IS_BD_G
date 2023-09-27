@@ -91,6 +91,7 @@
     }
     .tombola__element1 {
       scale: 0.6;
+      top: -10rem;
     }
   }
   @media only screen and (max-height: 300px) {
@@ -163,27 +164,27 @@
 
 .tombola__element1 {
   top: 5%;
-  left: 0%;
+  left: -10%;
 }
 
 .tombola__element2 {
-  top: -5%;
-  left: 25%;
+  top: -15%;
+  left: 18%;
 }
 
 .tombola__element3 {
-  top: 40%;
-  right: 30%;
+  top: 50%;
+  right: 20%;
 }
 
 .tombola__element4 {
-  top: 4%;
-  right: 0%;
+  top: -8%;
+  right: -8%;
 }
 
 .tombola__element5 {
   top: 40%;
-  left: 0rem;
+  left: -5%;
 }
 
 
