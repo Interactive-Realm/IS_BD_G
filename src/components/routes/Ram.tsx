@@ -31,7 +31,6 @@ const Ram = () => {
 
   return (
     <div>
-      <FlagThing />
       <div className="ram">
         <div className="is-background"></div>
         {component}
