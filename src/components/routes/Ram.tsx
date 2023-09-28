@@ -3,17 +3,21 @@ import { FlagThing } from "../animations/FlagThing";
 import RamEndScreen from "../ram/RamEndScreen";
 import RamGame from "../ram/RamGame";
 import RamMenu from "../ram/RamMenu";
+import CountdownScreen from "../ram/CountdownScreen";
 
-export type RamScreen = "menu" | "game" | "end-screen";
+export type RamScreen = "menu" | "game" | "end-screen" | "countdown-screen";
 
 const Ram = () => {
-  const [screen, setScreen] = useState<RamScreen>("end-screen");
+  const [screen, setScreen] = useState<RamScreen>("menu");
   const [score, setScore] = useState(0);
 
   let component;
   switch (screen) {
     case "menu":
       component = <RamMenu setScreen={setScreen} />;
+      break;
+    case "countdown-screen":
+      component = <CountdownScreen setScreen={setScreen}/>;
       break;
     case "game":
       component = (

@@ -31,7 +31,7 @@ const RamMenu = ({ setScreen }: Props) => {
         </div>
 
         <div className="button-group">
-          <button className="button primary" onClick={() => setScreen("game")}>
+          <button className="button primary" onClick={() => setScreen("countdown-screen")}>
             SPIL & VIND
           </button>
 

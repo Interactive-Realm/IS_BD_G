@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import CountdownTimer from './CountdownTimer';
+import CountdownTimer from '../CountdownTimer';
+import { RamScreen } from "../routes/Ram";
 
-interface LoadingScreenProps {
-    onComplete: () => void; // Define the type for onComplete
+interface CountdownScreenProps {
+    setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
   }
   
-  const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
+  const CountdownScreen: React.FC<CountdownScreenProps> = ({ setScreen}) => {
     const [countdownComplete, setCountdownComplete] = useState(false);
   
     // Use useEffect to detect when the countdown is complete
@@ -25,9 +26,9 @@ interface LoadingScreenProps {
     useEffect(() => {
       // When the countdown is complete, trigger the callback to render the Ram component
       if (countdownComplete) {
-        onComplete();
+        setScreen("game");
       }
-    }, [countdownComplete, onComplete]);
+    }, [countdownComplete]);
   
     return (
       <div>
@@ -36,4 +37,4 @@ interface LoadingScreenProps {
     );
   };
   
-  export default LoadingScreen;
+  export default CountdownScreen;
