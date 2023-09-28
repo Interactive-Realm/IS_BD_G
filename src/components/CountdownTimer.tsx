@@ -13,12 +13,15 @@ const CountdownTimer: React.FC = () => {
         // Play a sound based on the count
         if (count === 3) {
           const audioElement = new Audio(countdownSound);
+          audioElement.volume = 0.4;
           setAudio(audioElement);
         } else if (count === 2) {
           const audioElement = new Audio(countdownSound);
+          audioElement.volume = 0.4;
           setAudio(audioElement);
         } else if (count === 1) {
           const audioElement = new Audio(countdownSoundHighNode);
+          audioElement.volume = 0.4;
           setAudio(audioElement);
         }
       } else {

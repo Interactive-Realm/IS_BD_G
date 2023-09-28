@@ -1,5 +1,6 @@
 import { MenuLayout } from "../MenuLayout";
 import { RamScreen } from "../routes/Ram";
+import { FlagThing } from "../animations/FlagThing";
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
@@ -31,7 +32,7 @@ const RamMenu = ({ setScreen }: Props) => {
         </div>
 
         <div className="button-group">
-          <button className="button primary" onClick={() => setScreen("game")}>
+          <button className="button primary" onClick={() => setScreen("countdown-screen")}>
             SPIL & VIND
           </button>
 
