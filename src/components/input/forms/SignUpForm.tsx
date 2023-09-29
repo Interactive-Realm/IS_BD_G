@@ -90,11 +90,11 @@ const SignUpForm = ({ onSignUp }: Props) => {
         {errors.email && <p className="error">{errors.email.message}</p>}
       </label>
       <div className="input-checkbox">
-        <input {...register("checkbox")} type="checkbox" value="A" required="required"/> 
+        <input {...register("checkbox")} type="checkbox" value="A" required={true}/> 
         {' '} Jeg accepterer <button onClick={() => {}}>konkurrencebetingelserne</button>.
       </div>
       <div className="input-checkbox">
-        <input {...register("checkbox")} type="checkbox" value="B" required="required"/> 
+        <input {...register("checkbox")} type="checkbox" value="B" required={true}/> 
         {'  '} Jeg samtykker til at modtage nyhedsbreve fra CLUB Intersport.
       </div>
       <button className="button primary" type="submit">
