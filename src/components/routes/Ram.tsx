@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FlagThing } from "../animations/FlagThing";
 import RamEndScreen from "../ram/RamEndScreen";
 import RamGame from "../ram/RamGame";
 import RamMenu from "../ram/RamMenu";
