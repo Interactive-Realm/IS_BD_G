@@ -14,7 +14,7 @@ interface Props {
 }
 
 const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
   const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
 
   const saveScore = useCallback(async () => {
