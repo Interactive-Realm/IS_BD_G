@@ -50,7 +50,6 @@ const SignUpForm = ({ onSignUp }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
-        Fornavn
         <input
           type="text"
           {...register("firstName", { required: "skal udfyldes" })}
@@ -91,12 +90,12 @@ const SignUpForm = ({ onSignUp }: Props) => {
         {errors.email && <p className="error">{errors.email.message}</p>}
       </label>
       <div className="input-checkbox">
-        <input {...register("checkbox")} type="checkbox" value="A" />
-        Jeg accepterer <button onClick={() => {}}>konkurrencebetingelser</button>.
+        <input {...register("checkbox")} type="checkbox" value="A" required="required"/> 
+        {' '} Jeg accepterer <button onClick={() => {}}>konkurrencebetingelserne</button>.
       </div>
       <div className="input-checkbox">
-        <input {...register("checkbox")} type="checkbox" value="B" />
-        Jeg samtykker til at modtage nyhedsbreve fra CLUB Intersport.
+        <input {...register("checkbox")} type="checkbox" value="B" required="required"/> 
+        {'  '} Jeg samtykker til at modtage nyhedsbreve fra CLUB Intersport.
       </div>
       <button className="button primary" type="submit">
         TILMED & DELTAG

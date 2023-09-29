@@ -75,13 +75,15 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
           <h1 className="blue-bold">
             <span>KONKURRENCE</span>
           </h1>
+          <div>
           <p>
-            For at deltage i konkurrencen skal du udfylde nedenstående felter.
-          </p>
-          <p>
+          For at deltage i konkurrencen skal du udfylde nedenstående felter.
+          <br></br>
+          <br></br>
           Ved at klikke på "Deltag i konkurrencen" accepterer du at modtage INTERSPORTS nyhedsmails fra Club INTERSPORT. 
           Nyhedsbrevet indeholder nyheder og tilbud fra INTERSPORTs sortiment. Samtykket kan til enhver tid trækkes tilbage.
           </p>
+          </div>
           <SignUpForm onSignUp={handleSignUp} />
         </>
       )}
