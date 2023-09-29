@@ -37,7 +37,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   const handlePlayAgain = async () => {
     if (score > 0) await saveScore();
     setScore(0);
-    setScreen("game");
+    setScreen("countdown-screen");
   };
 
   const handleSignUp = () => {
