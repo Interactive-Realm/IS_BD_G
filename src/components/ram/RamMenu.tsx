@@ -1,6 +1,6 @@
 import { MenuLayout } from "../MenuLayout";
 import { RamScreen } from "../routes/Ram";
-import { FlagThing } from "../animations/FlagThing";
+
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<RamScreen>>;
