@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getHighscores, getUser, insertScore } from "../../supabase-ram";
+import { getHighscores, getUser, insertScore, getAllTimeHighscores } from "../../supabase-ram";
 import { UserHighscore } from "../../types";
 import { formatScore } from "../../utils";
 import { MenuLayout } from "../MenuLayout";
@@ -16,6 +16,7 @@ interface Props {
 const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [weeklyHighscores, setWeeklyHighscores] = useState<UserHighscore[]>([]);
+  const [allTimeHighScore, setAllTimeHighScore] = useState<UserHighscore[]>([]);
 
   const saveScore = useCallback(async () => {
     await insertScore(score);
@@ -26,8 +27,10 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
       signIn();
 
       setWeeklyHighscores(await getHighscores());
+      setAllTimeHighScore(await getAllTimeHighscores());
     })();
   }, []);
+
 
   const signIn = async () => {
     const user = await getUser();
@@ -55,6 +58,10 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
           </h1>
 
           <HighscoreList highscores={weeklyHighscores} />
+          <h1 className="is-bold end-screen__title">
+            <span className="blue">Top Score</span>
+            <span className="blue">{formatScore(allTimeHighScore[0].highscore, 4)}</span>
+          </h1>
 
           <img
             src="/images/assets/RAM_MockUp_Elements/spilhverdag.png"

@@ -21,6 +21,15 @@ export const getHighscores = async (): Promise<UserHighscore[]> => {
 
   return data;
 };
+export const getAllTimeHighscores = async (): Promise<UserHighscore[]> => {
+  const { data, error } = await supabase.rpc('get_highscores', {
+    number_of_rows: 1,
+  });
+
+  if (error || !data) return [];
+
+  return data;
+};
 
 export const getUserWeeklyHighscore =
   async (): Promise<UserHighscore | null> => {

@@ -1,0 +1,24 @@
+weeklyHighscores
+begin
+  return query
+  select p.user_id, p.first_name, p.last_name, wh.score as highscore
+  from profiles p join (
+    select distinct on (h.user_id) h.user_id as user_id, h.score
+    from highscores h
+    where extract(week FROM h.created_at) = extract(week FROM score_date) and extract(year FROM h.created_at) = extract(year FROM score_date) 
+    limit number_of_rows
+  ) wh on p.user_id = wh.user_id
+  order by wh.score desc;
+end;
+
+allTimeHighscores
+begin
+  return query
+  select p.user_id, p.first_name, p.last_name, bh.score
+  from profiles p join (
+    select distinct on (h.user_id) h.user_id as user_id, score
+    from highscores h
+    limit number_of_rows
+  ) bh on p.user_id = bh.user_id
+  order by bh.score desc;
+end;
