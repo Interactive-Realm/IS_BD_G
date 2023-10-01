@@ -65,9 +65,10 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
             <button className="button primary" onClick={handlePlayAgain}>
               SPIL IGEN
             </button>
-            <button className="button text">
-              *Se konkurrencebetingelser her
-            </button>
+            <p className="button text menu__konkurrencebetingelser">
+          * Se konkurrencebetingelser <a href="https://www.intersport.dk/fodselsdagsspil.html" className="menu__konkurrencebetingelser underline" target="_blank">her
+          </a>
+          </p>
           </div>
         </>
       ) : (

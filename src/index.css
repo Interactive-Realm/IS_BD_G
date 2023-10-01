@@ -600,3 +600,7 @@ form .error {
   gap: 0.5rem;
   max-width: 500px;
 }
+/* a single underline */
+.underline {
+  text-decoration-line: underline;
+}

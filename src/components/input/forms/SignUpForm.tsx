@@ -91,7 +91,7 @@ const SignUpForm = ({ onSignUp }: Props) => {
       </label>
       <div className="input-checkbox">
         <input {...register("checkbox")} type="checkbox" value="A" required={true}/> 
-        {' '} Jeg accepterer <button onClick={() => {}}>konkurrencebetingelserne</button>.
+        {' '} Jeg accepterer <a href="https://intersport.dk/fodselsdagsspil.html" className="underline" target="_blank">konkurrencebetingelserne</a>.
       </div>
       <div className="input-checkbox">
         <input {...register("checkbox")} type="checkbox" value="B" required={true}/> 

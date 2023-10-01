@@ -35,10 +35,10 @@ const RamMenu = ({ setScreen }: Props) => {
           <button className="button primary" onClick={() => setScreen("countdown-screen")}>
             SPIL & VIND
           </button>
-
-          <a href="https://www.intersport.dk/fodselsdagsspil.html" className="button text menu__konkurrencebetingelser">
-            *Se konkurrencebetingelser
+          <p className="button text menu__konkurrencebetingelser">
+          * Se konkurrencebetingelser <a href="https://www.intersport.dk/fodselsdagsspil.html" className="menu__konkurrencebetingelser underline" target="_blank">her
           </a>
+          </p>
         </div>
       </MenuLayout>
     </>
