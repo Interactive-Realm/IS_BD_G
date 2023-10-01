@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  getHighscores,
+  getWeeklyHighscores,
   getUser,
   getUserWeeklyHighscore,
   insertScore,
@@ -41,7 +41,7 @@ const GameEndModal = ({ score }: Props) => {
         if (h) setHighscore(h.highscore);
       }
 
-      setWeeklyHighscores(await getHighscores());
+      setWeeklyHighscores(await getWeeklyHighscores());
     })();
   }, [saveScore]);
 

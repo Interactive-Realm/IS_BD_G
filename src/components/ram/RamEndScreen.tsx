@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getHighscores, getUser, insertScore, getAllTimeHighscores } from "../../supabase-ram";
+import { getWeeklyHighscores, getUser, insertScore, getAllTimeHighscores } from "../../supabase-ram";
 import { UserHighscore } from "../../types";
 import { formatScore } from "../../utils";
 import { MenuLayout } from "../MenuLayout";
@@ -26,7 +26,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
     (async () => {
       signIn();
 
-      setWeeklyHighscores(await getHighscores());
+      setWeeklyHighscores(await getWeeklyHighscores());
       setAllTimeHighScore(await getAllTimeHighscores());
     })();
   }, []);

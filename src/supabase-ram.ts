@@ -11,7 +11,7 @@ export const getDate = (): string => {
   return formattedDate;
 };
 
-export const getHighscores = async (): Promise<UserHighscore[]> => {
+export const getWeeklyHighscores = async (): Promise<UserHighscore[]> => {
   const { data, error } = await supabase.rpc('get_weekly_highscores', {
     number_of_rows: 10,
     score_date: getDate(),
@@ -21,6 +21,7 @@ export const getHighscores = async (): Promise<UserHighscore[]> => {
 
   return data;
 };
+
 export const getAllTimeHighscores = async (): Promise<UserHighscore[]> => {
   const { data, error } = await supabase.rpc('get_highscores', {
     number_of_rows: 1,
