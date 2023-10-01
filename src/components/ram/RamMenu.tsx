@@ -29,7 +29,10 @@ const RamMenu = ({ setScreen }: Props) => {
             <li>plads - voucher på 200 kr. til intersport.dk</li>
             <li>plads - voucher på 100 kr. til intersport.dk</li>
           </ol>
-        </div>
+          <br></br>
+
+          <h3>SPRING FLEST BALLONER OG VÆR MED I KONKURRENCEN OM FED PRÆMIER!</h3>
+        </div>        
 
         <div className="button-group">
           <button className="button primary" onClick={() => setScreen("countdown-screen")}>

@@ -97,9 +97,12 @@ const SignUpForm = ({ onSignUp }: Props) => {
         <input {...register("checkbox")} type="checkbox" value="B" required={true}/> 
         {'  '} Jeg samtykker til at modtage nyhedsbreve fra CLUB Intersport.
       </div>
+      <div className="button-group" >
       <button className="button primary" type="submit">
         TILMED & DELTAG
       </button>
+      <p></p>
+      </div>
       {signInError !== "" && <p className="error">{signInError}</p>}
     </form>
   );

@@ -7,7 +7,7 @@ import CountdownScreen from "../ram/CountdownScreen";
 export type RamScreen = "menu" | "game" | "end-screen" | "countdown-screen";
 
 const Ram = () => {
-  const [screen, setScreen] = useState<RamScreen>("end-screen");
+  const [screen, setScreen] = useState<RamScreen>("menu");
   const [score, setScore] = useState(0);
 
   let component;

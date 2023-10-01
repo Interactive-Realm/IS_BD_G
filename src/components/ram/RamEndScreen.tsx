@@ -62,7 +62,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
         
         {allTimeHighScore.length > 0 ? (
           <h1 className="is-bold end-screen__title">
-          <span className="blue">SPILLETS #1 {allTimeHighScore[0].first_name} </span>
+          <span className="blue">SPILLETS #1 {allTimeHighScore[0].first_name} {allTimeHighScore[0].last_name[0]}.</span>
           <span className="red">{formatScore(allTimeHighScore[0].highscore, 4)}</span>
           </h1>
         ) : (
