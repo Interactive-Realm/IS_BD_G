@@ -26,25 +26,37 @@ const SignUpForm = ({ onSignUp }: Props) => {
   const onSubmit: SubmitHandler<SignUpFormData> = async (values) => {
     if (values.checkbox && values.checkbox.length < 2) return;
 
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: "000000",
-      options: {
-        data: {
-          email: values.email,
-          phone: values.phone,
-          first_name: values.firstName,
-          last_name: values.lastName,
-        },
-      },
     });
 
     if (error) {
-      setSignInError("Kunne ikke logge ind. Er din information korrekt?");
+      const { error } = await supabase.auth.signUp({
+        email: values.email,
+        password: "000000",
+        options: {
+          data: {
+            email: values.email,
+            phone: values.phone,
+            first_name: values.firstName,
+            last_name: values.lastName,
+          },
+        },
+      });
+  
+      if (error) {
+        setSignInError("Kunne ikke tilmelde. Er din information korrekt?");
+      } else {
+        setSignInError("");
+        onSignUp();
+      }
     } else {
-      setSignInError("");
+      setSignInError('');
       onSignUp();
     }
+
+    
   };
 
   return (
