@@ -58,14 +58,17 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
           </h1>
 
           <HighscoreList highscores={weeklyHighscores} />
-                <h1 className="is-bold end-screen__title">
-        <span className="blue">Top Score</span>
+                
+        
         {allTimeHighScore.length > 0 ? (
-          <span className="blue">{formatScore(allTimeHighScore[0].highscore, 4)}</span>
+          <h1 className="is-bold end-screen__title">
+          <span className="blue">SPILLETS #1 {allTimeHighScore[0].first_name} </span>
+          <span className="red">{formatScore(allTimeHighScore[0].highscore, 4)}</span>
+          </h1>
         ) : (
-          <span>No high score data available</span>
+          <span className="red">No high score data available</span>
         )}
-      </h1>
+      
 
           <img
             src="/images/assets/RAM_MockUp_Elements/spilhverdag.png"
