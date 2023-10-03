@@ -31,7 +31,7 @@ const RamMenu = ({ setScreen }: Props) => {
           </ol>
           <br></br>
 
-          <h3>SPRING FLEST BALLONER OG VÆR MED I KONKURRENCEN OM FED PRÆMIER!</h3>
+          <h3>SPRING FLEST BALLONER OG VÆR MED I KONKURRENCEN OM FEDE PRÆMIER!</h3>
         </div>        
 
         <div className="button-group">
