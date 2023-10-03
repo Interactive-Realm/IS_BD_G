@@ -122,6 +122,10 @@ h2 {
   display: grid;
   grid-template-rows: 1fr auto;
   height: 100vh;
+  height: 100svh;
+  -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 .menu-layout main {
