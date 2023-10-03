@@ -26,7 +26,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
     (async () => {
       signIn();
       
-      setWeeklyHighscores(await getWeeklyHighscores());
+      
       setAllTimeHighScore(await getAllTimeHighscores());
     })();
   }, []);
@@ -35,7 +35,8 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   const signIn = async () => {
     const user = await getUser();
     setIsSignedIn(user !== null);
-    {if (score > 0) await saveScore();}
+    if (score > 0) await saveScore();
+    setWeeklyHighscores(await getWeeklyHighscores());
   };
 
   const handlePlayAgain = async () => {
