@@ -23,7 +23,7 @@ export const getWeeklyHighscores = async (): Promise<UserHighscore[]> => {
 };
 
 export const getAllTimeHighscores = async (): Promise<UserHighscore[]> => {
-  const { data, error } = await supabase.rpc('get_highscores', {
+  const { data, error } = await supabase.rpc('get_global_highscores', {
     number_of_rows: 1,
   });
 
