@@ -16,6 +16,16 @@ const RamMenu = ({ setScreen }: Props) => {
           <span className="red">& VIND!</span>
         </h1>
 
+        <br></br>
+
+        <div className="button-group">
+          <button className="button primary" onClick={() => setScreen("countdown-screen")}>
+            SPIL & VIND
+          </button>
+          <p >
+          </p>
+        </div>
+
         <img
           className="menu__main-prize"
           src="/images/assets/RAM_MockUp_Elements/tekst_hovedpræmie.png"
@@ -34,15 +44,12 @@ const RamMenu = ({ setScreen }: Props) => {
           <h3>SPRING FLEST BALLONER OG VÆR MED I KONKURRENCEN OM FEDE PRÆMIER!</h3>
         </div>        
 
-        <div className="button-group">
-          <button className="button primary" onClick={() => setScreen("countdown-screen")}>
-            SPIL & VIND
-          </button>
-          <p className="button text menu__konkurrencebetingelser">
+        <p className="button text menu__konkurrencebetingelser">
           * Se konkurrencebetingelser <a href="https://www.intersport.dk/fodselsdagsspil.html" className="menu__konkurrencebetingelser underline" target="_blank">her
           </a>
           </p>
-        </div>
+
+        
       </MenuLayout>
     </>
   );
