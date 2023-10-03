@@ -25,7 +25,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   useEffect(() => {
     (async () => {
       signIn();
-
+      
       setWeeklyHighscores(await getWeeklyHighscores());
       setAllTimeHighScore(await getAllTimeHighscores());
     })();
@@ -35,10 +35,11 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
   const signIn = async () => {
     const user = await getUser();
     setIsSignedIn(user !== null);
+    {if (score > 0) await saveScore();}
   };
 
   const handlePlayAgain = async () => {
-    if (score > 0) await saveScore();
+    
     setScore(0);
     setScreen("countdown-screen");
   };
@@ -51,6 +52,7 @@ const RamEndScreen = ({ setScreen, score, setScore }: Props) => {
     <MenuLayout>
       {isSignedIn ? (
         <>
+        
           <h1 className="is-bold end-screen__title">
             <span className="blue">DIN SCORE</span>
             <span className="red">{formatScore(score, 4)}</span>
