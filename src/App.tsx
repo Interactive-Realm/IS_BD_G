@@ -11,8 +11,8 @@ function App() {
           path="/"
           element={<CO />}
         />
-        {/* <Route path="/tombola/*" element={<Tombola />} />
-        <Route path="*" element={<Ram />} /> */}
+        {/* <Route path="/tombola/*" element={<Tombola />} />*/}
+        <Route path="*" element={<CO />} /> 
       </Routes>
     </BrowserRouter>
   );
