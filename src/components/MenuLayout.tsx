@@ -1,4 +1,4 @@
-import { FlagThing } from "./animations/FlagThing";
+// import { FlagThing } from "./animations/FlagThing";
 
 type Props = {
   children: React.ReactNode;

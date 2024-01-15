@@ -1,5 +1,5 @@
 import { MenuLayout } from '../MenuLayout';
-import { FlagThing } from '../animations/FlagThing';
+// import { FlagThing } from '../animations/FlagThing';
 
 const Menu = () => {
   return (
