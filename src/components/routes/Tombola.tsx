@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import "../../styles/tombola.css";
-import { getPrice } from "../../supabase-tombola";
+// import { getPrice } from "../../supabase-tombola";
 import { Prize } from "../../types";
 import TombolaBalloon from "../TombolaBalloon";
 import { FlagThing } from "../animations/FlagThing";

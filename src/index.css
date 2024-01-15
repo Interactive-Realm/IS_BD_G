@@ -157,6 +157,7 @@ box-sizing: border-box;
 
 @media only screen and (min-width: 480px) {
   .menu-title {
+    text-align: center;
     box-sizing: border-box;
     font-size: 3.5rem;
     line-height: 4.5rem;
@@ -189,6 +190,7 @@ box-sizing: border-box;
 .menu__prizes-info {
   display: grid;
   gap: 0.18rem;
+  text-align: center;
 }
 
 .menu__prizes-info h2 {

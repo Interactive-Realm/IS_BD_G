@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getWeeklyHighscores, getUser, insertScore, getAllTimeHighscores } from "../../supabase-ram";
+// import { getWeeklyHighscores, getUser, insertScore, getAllTimeHighscores } from "../../supabase-ram";
 import { UserHighscore } from "../../types";
 import { formatScore } from "../../utils";
 import { MenuLayout } from "../MenuLayout";

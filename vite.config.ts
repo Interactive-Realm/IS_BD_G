@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [
     react(),
     EnvironmentPlugin([
-      'SUPABASE_URL',
-      'SUPABASE_KEY',
-      'SUPABASE_URL_TOMBOLA',
-      'SUPABASE_KEY_TOMBOLA',
+      // 'SUPABASE_URL',
+      // 'SUPABASE_KEY',
+      // 'SUPABASE_URL_TOMBOLA',
+      // 'SUPABASE_KEY_TOMBOLA',
     ]),
   ],
 });

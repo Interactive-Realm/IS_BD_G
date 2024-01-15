@@ -7,7 +7,7 @@ type Props = {
 export const MenuLayout = ({ children }: Props) => {
   return (
     <div className="menu-layout">
-      <FlagThing/>
+      {/* <FlagThing/> */}
       <main>
         <div className="menu-layout__content">
           {children}
