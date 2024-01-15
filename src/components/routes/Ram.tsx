@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RamEndScreen from "../ram/RamEndScreen";
+// import RamEndScreen from "../ram/RamEndScreen";
 import RamGame from "../ram/RamGame";
 import RamMenu from "../ram/RamMenu";
 import CountdownScreen from "../ram/CountdownScreen";
@@ -24,7 +24,7 @@ const Ram = () => {
       );
       break;
     case "end-screen":
-      component = <RamEndScreen setScreen={setScreen} score={score} setScore={setScore} />;
+      // component = <RamEndScreen setScreen={setScreen} score={score} setScore={setScore} />;
       break;
   }
 
